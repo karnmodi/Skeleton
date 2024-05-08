@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="2Viewer.aspx.cs" Inherits="_1Viewer" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="UsersDataEntry.aspx.cs" Inherits="_1_DataEntry" %>
 
 <!DOCTYPE html>
 
@@ -7,6 +7,7 @@
     <title></title>
 </head>
 <body>
+    THIS IS A ORDER DATA ENTRY PAGE.
     <form id="form1" runat="server">
         <div>
         </div>
