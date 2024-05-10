@@ -7,6 +7,9 @@
     <title></title>
 </head>
 <body>
+
+
+    This is a Product Viewer Page.
     <form id="form1" runat="server">
         <div>
         </div>
