@@ -1,0 +1,6 @@
+﻿Server : v00egd00002l.lec-admin.dmu.ac.uk
+
+UserName : p2761604
+Password : 1234567891011121314
+
+And Select the the database : p2761604
