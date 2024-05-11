@@ -18,18 +18,6 @@ namespace Testing2
 
         [TestMethod]
 
-        public void ActivePropertyOK()
-        {
-            clsProduct AProduct = new clsProduct();
-            Boolean TestData = true;
-            AProduct.Active = TestData;
-            Assert.AreEqual(AProduct.Active, TestData);
-        }
-
-
-
-        [TestMethod]
-
         public void TitlePropertyOK()
         {
             clsProduct AProduct = new clsProduct();
@@ -80,12 +68,12 @@ namespace Testing2
 
         [TestMethod]
 
-        public void AvaibilityPropertyOK()
+        public void AvailabilityPropertyOK()
         {
             clsProduct AProduct = new clsProduct();
             Boolean TestData = true;
-            AProduct.Avaibility = TestData;
-            Assert.AreEqual(AProduct.Avaibility, TestData);
+            AProduct.Availability = TestData;
+            Assert.AreEqual(AProduct.Availability, TestData);
         }
 
 

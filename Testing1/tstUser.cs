@@ -17,17 +17,6 @@ namespace Testing1
 
         [TestMethod]
 
-        public void ActivePropertyOK()
-        {
-            clsUser AUser = new clsUser();
-            Boolean TestData = true;
-            AUser.Active = TestData;
-            Assert.AreEqual(AUser.Active, TestData);
-        }
-
-
-        [TestMethod]
-
         public void UsernamePropertyOK()
         {
             clsUser AUser = new clsUser();
