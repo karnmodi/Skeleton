@@ -135,7 +135,7 @@ namespace Testing2
             Boolean OK = true;
             Int32 ProductID = 5;
             Found = AProduct.Find(ProductID);
-            if(AProduct.Title!= "ProductName")
+            if(AProduct.Title!= "Database Management")
             {
                 OK = false;
             }
@@ -151,7 +151,7 @@ namespace Testing2
             Boolean OK = true;
             Int32 ProductID = 5;
             Found = AProduct.Find(ProductID);
-            if(AProduct.Description != "Description1234")
+            if(AProduct.Description != "Comprehensive guide on database management systems.")
             {
                 OK = false;
             }
@@ -167,7 +167,7 @@ namespace Testing2
             Boolean OK = true;
             Int32 ProductID = 5;
             Found = AProduct.Find(ProductID);
-            if(AProduct.Price!= 5.50)
+            if(AProduct.Price!= 59.99)
             {
                 OK = false;
             }
@@ -183,7 +183,7 @@ namespace Testing2
             Boolean OK = true;
             Int32 ProductID = 5;
             Found = AProduct.Find(ProductID);
-            if(AProduct.Condition!= "Good")
+            if(AProduct.Condition!= "New")
             {
                 OK = false;
             }
@@ -215,7 +215,7 @@ namespace Testing2
             Boolean OK = true;
             Int32 ProductID = 5;
             Found = AProduct.Find(ProductID);
-            if(AProduct.DateListed!= Convert.ToDateTime("24/08/2024"))
+            if(AProduct.DateListed!= Convert.ToDateTime("09/05/2024"))
             {
                 OK = false;
             }

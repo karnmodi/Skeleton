@@ -131,16 +131,29 @@ namespace ClassLibrary
 
 
 
-        public bool Find(int productID)
+        public bool Find(int ProductID)
         {
-            mProductID = 5;
-            mTitle = "ProductName";
-            mDescription = "Description1234";
-            mPrice = 5.50;
-            mCondition = "Good";
-            mAvailability = true;
-            mDateListed = Convert.ToDateTime("24/08/2024");
-            return true;
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@ProductID", ProductID);
+            DB.Execute("stpr_tblProduct_FilterbyProductID");
+
+            if(DB.Count == 1)
+            {
+                mProductID = Convert.ToInt32(DB.DataTable.Rows[0]["ProductID"]);
+                mTitle = Convert.ToString(DB.DataTable.Rows[0]["Title"]);
+                mDescription = Convert.ToString(DB.DataTable.Rows[0]["Description"]);
+                mPrice = Convert.ToDouble(DB.DataTable.Rows[0]["Price"]);
+                mCondition = Convert.ToString(DB.DataTable.Rows[0]["Condition"]);
+                mAvailability = Convert.ToBoolean(DB.DataTable.Rows[0]["Availability"]);
+                mDateListed= Convert.ToDateTime(DB.DataTable.Rows[0]["DateListed"]);
+                return true;
+            
+            }
+
+            else
+            {
+                return false;
+            }
         }
     }
 }
