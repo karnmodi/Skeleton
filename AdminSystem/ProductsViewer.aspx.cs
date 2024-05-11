@@ -13,7 +13,7 @@ public partial class _1Viewer : System.Web.UI.Page
         clsProduct AProduct = new clsProduct();
         AProduct = (clsProduct)Session["AProduct"];
         Response.Write("Title : " + AProduct.Title + "\n");
-        Response.Write("Description : " + AProduct.Descripiton + "\n");
+        Response.Write("Description : " + AProduct.Description + "\n");
         Response.Write("Price : " + AProduct.Price + "\n");
         Response.Write("Condition : " + AProduct.Condition + "\n");
         Response.Write("Availibility : " + AProduct.Availability + "\n");
