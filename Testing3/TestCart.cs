@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ClassLibrary;
+﻿using ClassLibrary;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
-namespace Testing3
+namespace Testing4
 {
+    [TestClass]
     public class TestCart
     {
+        public object TestData { get; private set; }
+
         [TestMethod]
         public void TestMethod1()
         {
@@ -19,59 +19,56 @@ namespace Testing3
         public void ActivePropertyOk()
         {
             clsCart ACart = new clsCart();
-            boolean TestData = true;
+            Boolean TestData = true;
             ACart.Active = TestData;
             Assert.AreEqual(ACart.Active, TestData);
         }
 
         [TestMethod]
-        public void CartIDPropertyNotOk()
+        public void CartIDPropertyOk()
         {
-            ClsCart ACart = new ClsCart();
+            clsCart ACart = new clsCart();
             int TestData = 1;
             ACart.CartID = TestData;
             Assert.AreEqual(ACart.CartID, TestData);
         }
 
         [TestMethod]
-        public void UserIDPropertyNotOK()
+        public void TotalPricePropertyOK()
         {
-            clsCart ACart = newclsCart();
-            int TestData = 3;
-            ACart.UserID = TestData;
-            Assert.AreEqual(ACart.UserID, TestData);
+            clsCart ACart = new clsCart();
+            int TestData = 35;
+            ACart.TotalPrice = TestData;
+            Assert.AreEqual(ACart.TotalPrice, TestData);
         }
 
         [TestMethod]
-        public void ProductIDPropertyNotOK()
+        public void CartDiscriptionPropertyOK()
         {
-            clsCart ACart = newclsCart();
-            int TestData = 4;
-            ACart.ProductID = TestData;
-            Assert.AreEqual(ACart.ProductID, TestData);
+            clsCart ACart = new clsCart();
+            String TestData = "100";
+            ACart.CartDiscription = TestData;
+            Assert.AreEqual(ACart.CartDiscription, TestData);
         }
 
         [TestMethod]
-        public void QuantityPropertyNotOK()
+        public void QuantityPropertyOK()
         {
-            clsCart ACart = newclsCart();
+            clsCart ACart = new clsCart();
             int TestData = 7;
             ACart.Quantity = TestData;
             Assert.AreEqual(ACart.Quantity, TestData);
         }
 
         [TestMethod]
-        public void DateAddedPropertyNotOK()
+        public void DateAddedPropertyOK()
         {
-            clsCart ACart = newclsCart();
+            clsCart ACart = new clsCart();
             DateTime TestData = DateTime.Now.Date;
             ACart.DateAdded = TestData;
             Assert.AreEqual(ACart.DateAdded, TestData);
         }
+
+
     }
 }
-
-
-
-
-
