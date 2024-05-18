@@ -163,21 +163,21 @@ namespace ClassLibrary
 
             if(title.Length == 0)
             {
-                Error = Error + "Title may not be empty.";
+                Error = Error + "Title may not be empty.\n";
             }
             if(title.Length >= 31)
             {
-                Error = Error + "Title must be lesser than 30 Characters.";
+                Error = Error + "Title must be lesser than 30 Characters.\n";
             }
 
 
             if(description.Length == 0)
             {
-                Error = Error + "Description cannot be Empty.";
+                Error = Error + "Description cannot be Empty.\n";
             }
             if(description.Length >= 501)
             {
-                Error = Error + "Description cannot be more than 500 Characters.";
+                Error = Error + "Description cannot be more than 500 Characters.\n";
             }
 
             try
@@ -185,16 +185,16 @@ namespace ClassLibrary
                 CheckDate = Convert.ToDateTime(dateListed);
                 if (CheckDate < DateTime.Now.Date)
                 {
-                    Error = Error + "Date cannot be in the past";
+                    Error = Error + "Date cannot be in the past \n";
                 }
                 if (CheckDate > DateTime.Now.Date)
                 {
-                    Error = Error + "Date cannot be in the future.";
+                    Error = Error + "Date cannot be in the future. \n";
                 }
             }
             catch
             {
-                Error = Error + "The Date is not in a Valid Format.";
+                Error = Error + "The Date is not in a Valid Format.\n";
             }
             
 
