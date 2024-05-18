@@ -155,5 +155,50 @@ namespace ClassLibrary
                 return false;
             }
         }
+
+        public string Valid(string title, string description, string price, string condition, string dateListed)
+        {
+            String Error = "";
+            DateTime CheckDate;
+
+            if(title.Length == 0)
+            {
+                Error = Error + "Title may not be empty.";
+            }
+            if(title.Length >= 31)
+            {
+                Error = Error + "Title must be lesser than 30 Characters.";
+            }
+
+
+            if(description.Length == 0)
+            {
+                Error = Error + "Description cannot be Empty.";
+            }
+            if(description.Length >= 501)
+            {
+                Error = Error + "Description cannot be more than 500 Characters.";
+            }
+
+            try
+            {
+                CheckDate = Convert.ToDateTime(dateListed);
+                if (CheckDate < DateTime.Now.Date)
+                {
+                    Error = Error + "Date cannot be in the past";
+                }
+                if (CheckDate > DateTime.Now.Date)
+                {
+                    Error = Error + "Date cannot be in the future.";
+                }
+            }
+            catch
+            {
+                Error = Error + "The Date is not in a Valid Format.";
+            }
+            
+
+            return Error;
+        }
     }
 }

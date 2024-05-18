@@ -7,7 +7,305 @@ namespace Testing2
     [TestClass]
     public class tstProduct
     {
-        /******************Instance of the class Test*********************/
+
+
+
+        /***** Test Data *******/
+
+        String Title = "SmartPhone";
+        String Description = "Brand new smartphone with advanced features.";
+        String Price = "299.99";
+        String Condition = "New";
+        String DateListed = DateTime.Now.ToShortDateString();
+
+
+        /******************** Validation OK Tests *********************/
+
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            clsProduct AProduct = new clsProduct();
+            String Error = "";
+            Error = AProduct.Valid(Title, Description, Price, Condition, DateListed);
+            Assert.AreEqual(Error, "");
+         }
+
+        /********************** Title Validation ************************/
+
+        [TestMethod]
+        public void TitleMinLessOne()
+        {
+            clsProduct AProduct = new clsProduct();
+            String Error = "";
+            String Title = "";
+            Error = AProduct.Valid(Title, Description, Price, Condition, DateListed);
+            Assert.AreEqual(Error, "");
+        }
+        
+        
+        [TestMethod]
+        public void TitleMin()
+        {
+            clsProduct AProduct = new clsProduct();
+            String Error = "";
+            String Title = "a";
+            Error = AProduct.Valid(Title, Description, Price, Condition, DateListed);
+            Assert.AreEqual(Error, "");
+        }
+        
+        
+        [TestMethod]
+        public void TitleMinPlusOne()
+        {
+            clsProduct AProduct = new clsProduct();
+            String Error = "";
+            String Title = "aa";
+            Error = AProduct.Valid(Title, Description, Price, Condition, DateListed);
+            Assert.AreEqual(Error, "");
+        }
+        
+        
+        [TestMethod]
+        public void TitleMaxLessOne()
+        {
+            clsProduct AProduct = new clsProduct();
+            String Error = "";
+            String Title = "";
+            Title = Title.PadRight(29, 'a');
+            Error = AProduct.Valid(Title, Description, Price, Condition, DateListed);
+            Assert.AreEqual(Error, "");
+        }
+        
+        
+        [TestMethod]
+        public void TitleMax()
+        {
+            clsProduct AProduct = new clsProduct();
+            String Error = "";
+            String Title = "";
+            Title = Title.PadRight(30, 'a'); 
+            Error = AProduct.Valid(Title, Description, Price, Condition, DateListed);
+            Assert.AreEqual(Error, "");
+        }
+        
+        
+        [TestMethod]
+        public void TitleMaxPlusOne()
+        {
+            clsProduct AProduct = new clsProduct();
+            String Error = "";
+            String Title = "";
+            Title = Title.PadRight(31, 'a');
+            Error = AProduct.Valid(Title, Description, Price, Condition, DateListed);
+            Assert.AreEqual(Error, "");
+        }
+        
+        
+        [TestMethod]
+        public void TitleMid()
+        {
+            clsProduct AProduct = new clsProduct();
+            String Error = "";
+            String Title = "";
+            Title = Title.PadRight(15, 'a');
+            Error = AProduct.Valid(Title, Description, Price, Condition, DateListed);
+            Assert.AreEqual(Error, "");
+        }
+
+        
+        [TestMethod]
+        public void TitleExtremeMax()
+        {
+            clsProduct AProduct = new clsProduct();
+            String Error = "";
+            String Title = "";
+            Title = Title.PadRight(300, 'a');
+            Error = AProduct.Valid(Title, Description, Price, Condition, DateListed);
+            Assert.AreEqual(Error, "");
+        }
+
+
+         /********************** Description Validation ************************/
+
+        [TestMethod]
+        public void DescriptionMinLessOne()
+        {
+            clsProduct AProduct = new clsProduct();
+            String Error = "";
+            String Description = "";
+            Error = AProduct.Valid(Title, Description, Price, Condition, DateListed);
+            Assert.AreEqual(Error, "");
+        }
+        
+        
+        [TestMethod]
+        public void DescriptionMin()
+        {
+            clsProduct AProduct = new clsProduct();
+            String Error = "";
+            String Description = "d";
+            Error = AProduct.Valid(Title, Description, Price, Condition, DateListed);
+            Assert.AreEqual(Error, "");
+        }
+        
+        
+        [TestMethod]
+        public void DescriptionMinPlusOne()
+        {
+            clsProduct AProduct = new clsProduct();
+            String Error = "";
+            String Description = "dd";
+            Error = AProduct.Valid(Title, Description, Price, Condition, DateListed);
+            Assert.AreEqual(Error, "");
+        }
+        
+        
+        [TestMethod]
+        public void DescriptionMaxLessOne()
+        {
+            clsProduct AProduct = new clsProduct();
+            String Error = "";
+            String Description = "";
+            Description = Description.PadRight(499, 'd');
+            Error = AProduct.Valid(Title, Description, Price, Condition, DateListed);
+            Assert.AreEqual(Error, "");
+        }
+        
+        
+        [TestMethod]
+        public void DescriptionMax()
+        {
+            clsProduct AProduct = new clsProduct();
+            String Error = "";
+            String Description = "";
+            Description = Description.PadRight(500, 'd'); 
+            Error = AProduct.Valid(Title, Description, Price, Condition, DateListed);
+            Assert.AreEqual(Error, "");
+        }
+        
+        
+        [TestMethod]
+        public void DescriptionMaxPlusOne()
+        {
+            clsProduct AProduct = new clsProduct();
+            String Error = "";
+            string Description = "";
+            Description = Description.PadRight(501, 'd');
+            Error = AProduct.Valid(Title, Description, Price, Condition, DateListed);
+            Assert.AreEqual(Error, "");
+        }
+        
+        
+        [TestMethod]
+        public void DescriptionMid()
+        {
+            clsProduct AProduct = new clsProduct();
+            String Error = "";
+            string Description = "";
+            Description = Description.PadRight(250, 'd');
+            Error = AProduct.Valid(Title, Description, Price, Condition, DateListed);
+            Assert.AreEqual(Error, "");
+        }
+
+        
+        [TestMethod]
+        public void DescriptionExtremeMax()
+        {
+            clsProduct AProduct = new clsProduct();
+            String Error = "";
+            string Description = "";
+            Description = Description.PadRight(5000, 'd');
+            Error = AProduct.Valid(Title, Description, Price, Condition, DateListed);
+            Assert.AreEqual(Error, "");
+        }
+
+
+        /********************** DateListed Validation ************************/
+
+        [TestMethod]
+        public void DateListedExtremeMinimum()
+        {
+            clsProduct AProduct = new clsProduct();
+            String Error = "";
+            DateTime TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(-100);
+
+           string DateListed = TestDate.ToString();
+            Error = AProduct.Valid(Title, Description, Price, Condition, DateListed);
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void DateListedMinLessOne()
+        {
+            clsProduct AProduct = new clsProduct();
+            String Error = "";
+            DateTime TestDate = DateTime.Now.Date;
+            TestDate  = TestDate.AddDays(-1);
+
+            string DateListed = TestDate.ToString();
+            Error = AProduct.Valid(Title, Description, Price, Condition, DateListed);
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void DateListedMin()
+        {
+            clsProduct AProduct = new clsProduct();
+            String Error = "";
+            DateTime TestDate = DateTime.Now.Date;
+
+            string DateListed = TestDate.ToString();
+            Error = AProduct.Valid(Title, Description, Price, Condition, DateListed);
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void DateListedMinPlusOne()
+        {
+            clsProduct AProduct = new clsProduct();
+            String Error = "";
+            DateTime TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(1);
+
+            string DateListed = TestDate.ToString();
+            Error = AProduct.Valid(Title, Description, Price, Condition, DateListed);
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void DateListedExtremeMaximum()
+        {
+            clsProduct AProduct = new clsProduct();
+            String Error = "";
+            DateTime TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(100);
+
+            string DateListed = TestDate.ToString();
+            Error = AProduct.Valid(Title, Description, Price, Condition, DateListed);
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void DateListedInvalidDataType()
+        {
+            clsProduct AProduct = new clsProduct();
+            String Error = "";
+
+
+            string DateListed = "This is not a Valid Date Data Type.";
+            Error = AProduct.Valid(Title, Description, Price, Condition, DateListed);
+            Assert.AreEqual(Error, "");
+        }
+
+
+
+        /****************** Instance of the class Test *********************/
 
         [TestMethod]
         public void InstanceOK()
@@ -16,7 +314,7 @@ namespace Testing2
             Assert.IsNotNull(AProduct);
         }
 
-        /*************************Property OK Tests************************/
+        /************************* Property OK Tests ************************/
 
         [TestMethod]
         public void ProductIDPropertyOK()
