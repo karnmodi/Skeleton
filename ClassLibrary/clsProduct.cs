@@ -130,7 +130,6 @@ namespace ClassLibrary
         }
 
 
-
         public bool Find(int ProductID)
         {
             clsDataConnection DB = new clsDataConnection();

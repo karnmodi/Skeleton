@@ -16,6 +16,16 @@ namespace Testing1
 
 
         [TestMethod]
+        public void UserID() 
+        { 
+            clsUser AUser = new clsUser();
+            Int32 TestData = 1;
+            AUser.UserID = TestData;
+            Assert.AreEqual(AUser.UserID, TestData);
+        }
+
+
+        [TestMethod]
 
         public void UsernamePropertyOK()
         {
@@ -75,16 +85,24 @@ namespace Testing1
         }
 
 
+        [TestMethod]
+
+        public void ActivePropertyOK()
+        {
+            clsUser AUser = new clsUser();
+            Boolean TestData = true;
+            AUser.Active = TestData;
+            Assert.AreEqual(AUser.Active, TestData);
+        }
 
 
         [TestMethod]
-
-        public void PaymentInfoPropertyOK()
+        public void DateAddedPropertyOK()
         {
-            clsUser AUser = new clsUser();
-            String TestData = "Card";
-            AUser.PaymentInfo = TestData;
-            Assert.AreEqual(AUser.PaymentInfo, TestData);
+            clsUser AProduct = new clsUser();
+            DateTime TestData = DateTime.Now.Date;
+            AProduct.DateAdded = TestData;
+            Assert.AreEqual(AProduct.DateAdded, TestData);
         }
     }
 }
