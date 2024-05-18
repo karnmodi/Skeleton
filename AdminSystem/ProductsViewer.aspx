@@ -11,6 +11,7 @@
 
     <form id="form1" runat="server">
         <div>
+            <asp:ListBox ID="lstProductList" runat="server" style="z-index: 1; left: 10px; top: 15px; position: absolute; height: 278px; width: 371px"></asp:ListBox>
         </div>
     </form>
 </body>
