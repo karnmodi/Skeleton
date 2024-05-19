@@ -37,15 +37,29 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void btnOK_Click(object sender, EventArgs e)
     {
         clsReview AReview = new clsReview();
-        AReview.ReviewID = Convert.ToInt32(txtReviewID.Text);
-        AReview.Category = txtCategory.Text;
-        AReview.Rating = Convert.ToInt32(txtRating.Text);
-        AReview.Comment = txtComment.Text;
-        AReview.Recent = Convert.ToBoolean(chkRecent.Checked);
-        AReview.DatePosted = Convert.ToDateTime(txtDatePosted.Text);
+        string Category = txtCategory.Text;
+        string Rating = Convert.ToString(txtRating.Text);
+        string Comment = txtComment.Text;
+        string DatePosted = txtDatePosted.Text;
+        Boolean Recent = chkRecent.Checked;
 
-        Session["AReview"] = AReview;
-        Response.Redirect("ReviewsViewer.aspx");
+
+        string Error = "";
+        Error = AReview.Valid(Category, Rating, Comment, DatePosted, Recent);
+        if (Error == "")
+        {
+            AReview.Category = Category;
+            AReview.Rating = Convert.ToInt32(Rating);
+            AReview.Comment = Comment;
+            AReview.DatePosted = Convert.ToDateTime(DatePosted);
+            AReview.Recent = Convert.ToBoolean(Recent);
+            Session["AReview"] = AReview;
+            Response.Redirect("ReviewsViewer.aspx");
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
     }
 
     protected void btnCancel_Click(object sender, EventArgs e)
