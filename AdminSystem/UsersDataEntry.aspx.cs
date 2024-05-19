@@ -28,4 +28,25 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Session["AUser"] = AUser;
         Response.Redirect("UsersViewer.aspx");
     }
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        clsUser AUser = new clsUser();
+        Int32 UserID;
+        Boolean Found = false;
+
+        UserID = Convert.ToInt32(txtUserID.Text);
+        Found = AUser.Find(UserID);
+
+        if(Found == true)
+        {
+            txtUsername.Text = AUser.Username;
+            txtEmail.Text = AUser.Email;
+            txtPassword.Text = AUser.Password;
+            txtAddress.Text = AUser.Address;
+            txtPhone.Text = AUser.Phone;
+            chkActive.Checked = AUser.Active;
+            txtDateAdded.Text = AUser.DateAdded.ToString();
+        }
+    }
 }
