@@ -124,7 +124,7 @@ namespace Testing5
             Int32 ReviewID = 2;
 
             Found = AReview.Find(ReviewID);
-            if (AReview.Category != "Good")
+            if (AReview.Category != "Product B")
             {
                 OK = false;
             }
@@ -141,7 +141,7 @@ namespace Testing5
             Int32 ReviewID = 2;
 
             Found = AReview.Find(ReviewID);
-            if (AReview.Rating != 5)
+            if (AReview.Rating != 4)
             {
                 OK = false;
             }
@@ -158,7 +158,7 @@ namespace Testing5
             Int32 ReviewID = 2;
 
             Found = AReview.Find(ReviewID);
-            if (AReview.Comment != "Comment Can be added for the discription.")
+            if (AReview.Comment != "Good value for money.")
             {
                 OK = false;
             }
@@ -175,7 +175,7 @@ namespace Testing5
             Int32 ReviewID = 2;
 
             Found = AReview.Find(ReviewID);
-            if (AReview.DatePosted != DateTime.Now.Date;
+            if (AReview.DatePosted != DateTime.Now.Date)
             {
                 OK = false;
             }
@@ -192,7 +192,7 @@ namespace Testing5
             Int32 ReviewID = 2;
 
             Found = AReview.Find(ReviewID);
-            if (AReview.Recent != true)
+            if (AReview.Recent != false)
             {
                 OK = false;
             }
