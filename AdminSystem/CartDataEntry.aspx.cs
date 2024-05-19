@@ -32,4 +32,23 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
 
     }
+
+    protected void BtnFind_Click(object sender, EventArgs e)
+    {
+        clsCart Acart = new clsCart();
+        Int32 CartID;
+        
+        Boolean Found = false;
+        CartID=Convert.ToInt32(txtCartID.Text);
+        Found = Acart.Find(CartID);
+
+        if (Found == true) 
+        {
+            txtCartDiscription.Text = Acart.CartDiscription;
+            txtDateAdded.Text = Acart.DateAdded.ToString();
+            txtQuantity.Text = Acart.Quantity.ToString();
+            checkActive.Checked = Acart.Active;
+            txtTotalPrice.Text = Acart.TotalPrice.ToString();
+        }
+    }
 }

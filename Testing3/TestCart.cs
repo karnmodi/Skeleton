@@ -70,5 +70,115 @@ namespace Testing4
         }
 
 
+        [TestMethod]
+        public void FindMethodOk()
+        {
+            clsCart Acart = new clsCart();
+            Boolean Found = false;
+            Int32 CartID = 4;
+            Found = Acart.Find(CartID);
+            Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+        public void TestcartIDFound()
+        {
+            clsCart ACart = new clsCart();
+            Boolean found = false;
+            Boolean ok = true;
+            Int32 CartID = 4;
+
+            found = ACart.Find(CartID);
+            if (ACart.CartID != 4) 
+            {
+                ok= false;
+            }
+            Assert.IsTrue(ok);
+        }
+
+        [TestMethod]
+        public void TestTotalPriceFound()
+        {
+            clsCart ACart = new clsCart();
+            Boolean found = false;
+            Boolean ok = true;
+            Int32 CartID = 4;
+
+            found = ACart.Find(CartID);
+            if (ACart.TotalPrice != 6)
+            {
+                ok = false;
+            }
+            Assert.IsTrue(ok);
+        }
+
+        [TestMethod]
+        public void CartDiscriptionFound()
+        {
+            clsCart ACart = new clsCart();
+            Boolean found = false;
+            Boolean ok = true;
+            Int32 CartID = 4;
+
+            found = ACart.Find(CartID);
+            if (ACart.CartDiscription != "abc")
+            {
+                ok = false;
+            }
+            Assert.IsTrue(ok);
+        }
+
+        [TestMethod]
+        public void TestQuantityFound()
+        {
+            clsCart ACart = new clsCart();
+            Boolean found = false;
+            Boolean ok = true;
+            Int32 CartID = 4;
+
+            found = ACart.Find(CartID);
+            if (ACart.Quantity != 8)
+            {
+                ok = false;
+            }
+            Assert.IsTrue(ok);
+        }
+
+        [TestMethod]
+        public void TestDateAddedFound()
+        {
+            clsCart ACart = new clsCart();
+            Boolean found = false;
+            Boolean ok = true;
+            Int32 CartID = 4;
+
+            found = ACart.Find(CartID);
+            if (ACart.DateAdded != DateTime.Now.Date)
+            {
+                ok = false;
+            }
+            Assert.IsTrue(ok);
+        }
+
+        [TestMethod]
+        public void TestActiveFound()
+        {
+            clsCart ACart = new clsCart();
+            Boolean found = false;
+            Boolean ok = true;
+            Int32 CartID = 4;
+
+            found = ACart.Find(CartID);
+            if (ACart.Active != true)
+            {
+                ok = false;
+            }
+            Assert.IsTrue(ok);
+        }
+
+
+
+
+
     }
 }
