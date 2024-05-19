@@ -109,5 +109,57 @@ namespace ClassLibrary
                 return false;
             }
         }
+
+        public string Valid(string category, string rating, string comment, string dateAdded, bool recent)
+        {
+            String Error = "";
+            Int32 CheckRating = 0;
+            DateTime CheckDate;
+
+            if(category.Length == 0)
+            {
+                Error = Error + "Category cant be empty.";
+            }
+            if(category.Length >= 51)
+            {
+                Error = Error + "Category Cant be More than 50";
+            }
+
+            try
+            {
+                CheckRating = Convert.ToInt32(rating);
+                if (CheckRating <= 0)
+                {
+                    Error = Error + "Rating should neither be negative nor zero.";
+                }
+                if (CheckRating >= 11)
+                {
+                    Error = Error + "Rating should be less than 10 or equal to 10.";
+                }
+            }
+            catch
+            {
+                Error = Error + "Rating is not in the proper format; it must be an integer.";
+            }
+
+            try
+            {
+                CheckDate = Convert.ToDateTime(dateAdded);
+                if (CheckDate < DateTime.Now.Date)
+                {
+                    Error = Error + "Date must not be in the past.";
+                }
+                if (CheckDate > DateTime.Now.Date)
+                {
+                    Error = Error + "Date must not be in the Future.";
+                }
+            }
+            catch
+            {
+                Error = Error + "DatePosted is not in the proper format; it must be a DATE (DD/MM/YYYY).";
+            }
+            return Error;
+
+        }
     }
 }
