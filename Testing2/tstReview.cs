@@ -84,5 +84,120 @@ namespace Testing5
             Assert.AreEqual(AReview.Recent, TestData);
         }
 
+
+
+
+
+
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            clsReview AReview = new clsReview();
+            Boolean Found = false;
+            Int32 ReviewID = 2;
+            Found = AReview.Find(ReviewID);
+            Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+        public void TestReviewIDFound()
+        {
+            clsReview AReview = new clsReview();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ReviewID = 2;
+
+            Found = AReview.Find(ReviewID);
+            if (AReview.ReviewID != 2)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestCategoryFound()
+        {
+            clsReview AReview = new clsReview();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ReviewID = 2;
+
+            Found = AReview.Find(ReviewID);
+            if (AReview.Category != "Good")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+
+        [TestMethod]
+        public void TestRatingFound()
+        {
+            clsReview AReview = new clsReview();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ReviewID = 2;
+
+            Found = AReview.Find(ReviewID);
+            if (AReview.Rating != 5)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+
+        [TestMethod]
+        public void TestCommentFound()
+        {
+            clsReview AReview = new clsReview();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ReviewID = 2;
+
+            Found = AReview.Find(ReviewID);
+            if (AReview.Comment != "Comment Can be added for the discription.")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+
+        [TestMethod]
+        public void TestDatePostedFound()
+        {
+            clsReview AReview = new clsReview();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ReviewID = 2;
+
+            Found = AReview.Find(ReviewID);
+            if (AReview.DatePosted != DateTime.Now.Date;
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+
+        [TestMethod]
+        public void TestRecentFound()
+        {
+            clsReview AReview = new clsReview();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ReviewID = 2;
+
+            Found = AReview.Find(ReviewID);
+            if (AReview.Recent != true)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
     }
 }
