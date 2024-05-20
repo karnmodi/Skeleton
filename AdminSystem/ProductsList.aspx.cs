@@ -25,4 +25,10 @@ public partial class _1_List : System.Web.UI.Page
         lstProductsList.DataTextField = "Price";
         lstProductsList.DataBind();
     }
+
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        Session["ProductID"] = -1;
+        Response.Redirect("ProductsDataEntry.aspx");
+    }
 }

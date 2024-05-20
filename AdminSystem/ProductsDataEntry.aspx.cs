@@ -16,7 +16,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         string Description = txtDescription.Text;
         string Price = Convert.ToString(txtPrice.Text);
         string Condition = txtCondition.Text;
-        string Availability = chkAvailable.Text;
+        string Availability = Convert.ToString(chkAvailable.Checked);
         string DateListed = txtDate.Text;
 
         string Error = "";
@@ -29,8 +29,12 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AProduct.Condition = Condition;
             AProduct.Availability = Convert.ToBoolean(Availability);
             AProduct.DateListed = Convert.ToDateTime(DateListed);
-            Session["AProduct"] = AProduct;
-            Response.Redirect("ProductsViewer.aspx");
+            
+            clsProductCollection ProductList = new clsProductCollection();
+            ProductList.ThisProduct =  AProduct;
+
+            ProductList.Add();
+            Response.Redirect("ProductsList.aspx");
         }
         else
         {
