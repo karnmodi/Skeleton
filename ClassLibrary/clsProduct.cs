@@ -155,10 +155,11 @@ namespace ClassLibrary
             }
         }
 
-        public string Valid(string title, string description, string price, string condition, string dateListed)
+        public string Valid(string title, string description, string price, string condition, string availability, string dateListed)
         {
             String Error = "";
             DateTime CheckDate;
+            Double CheckPrice;
 
             if(title.Length == 0)
             {
@@ -179,6 +180,37 @@ namespace ClassLibrary
                 Error = Error + "Description cannot be more than 500 Characters.\n";
             }
 
+
+            try
+            {
+                CheckPrice = Convert.ToDouble(price);
+                if (CheckPrice <= 0)
+                {
+                    Error += "Price cannot be in Negative and Zero.";
+                }
+                if (CheckPrice > 4999.99)
+                {
+                    Error += "Price Must be smaller than 4999.99";
+                }
+            }
+            catch
+            {
+                Error += "Price Should in the valid format. E.g., 20.99";
+            }
+
+
+            if (condition.Length == 0)
+            {
+                Error = Error + "Condition may not be empty.\n";
+            }
+            if (condition.Length >= 21)
+            {
+                Error = Error + "Condition must be lesser than 20 Characters.\n";
+            }
+
+            
+
+
             try
             {
                 CheckDate = Convert.ToDateTime(dateListed);
@@ -195,6 +227,8 @@ namespace ClassLibrary
             {
                 Error = Error + "The Date is not in a Valid Format.\n";
             }
+
+
             
 
             return Error;
