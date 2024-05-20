@@ -86,5 +86,19 @@ namespace ClassLibrary
             return DB.Execute("stpr_tblProduct_Insert");
 
         }
+
+        public void Update()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@ProductID", mThisProduct.ProductID);
+            DB.AddParameter("@Title", mThisProduct.Title);
+            DB.AddParameter("@Description", mThisProduct.Description);
+            DB.AddParameter("@Price", mThisProduct.Price);
+            DB.AddParameter("@Condition", mThisProduct.Condition);
+            DB.AddParameter("@Availability", mThisProduct.Availability);
+            DB.AddParameter("@DateListed", mThisProduct.DateListed);
+
+            DB.Execute("stpr_tblProduct_Update");
+        }
     }
 }

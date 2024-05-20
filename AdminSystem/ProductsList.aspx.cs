@@ -8,12 +8,15 @@ using System.Web.UI.WebControls;
 
 public partial class _1_List : System.Web.UI.Page
 {
+
     protected void Page_Load(object sender, EventArgs e)
     {
         if(IsPostBack == false)
         {
             DisplayProducts();
         }
+        lblError.Text = Convert.ToString(Session["Message"]);
+
 
     }
 
@@ -21,8 +24,8 @@ public partial class _1_List : System.Web.UI.Page
     {
         clsProductCollection AllProducts = new clsProductCollection();
         lstProductsList.DataSource = AllProducts.ProductList;
-        lstProductsList.DataValueField = "Title";
-        lstProductsList.DataTextField = "Price";
+        lstProductsList.DataValueField = "ProductID";
+        lstProductsList.DataTextField = "Title";
         lstProductsList.DataBind();
     }
 
@@ -30,5 +33,23 @@ public partial class _1_List : System.Web.UI.Page
     {
         Session["ProductID"] = -1;
         Response.Redirect("ProductsDataEntry.aspx");
+    }
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        Int32 ProductID;
+
+        if(lstProductsList.SelectedIndex != -1)
+        {
+            ProductID = Convert.ToInt32(lstProductsList.SelectedValue);
+            Session["ProductID"] = ProductID;
+            Response.Redirect("ProductsDataEntry.aspx");
+
+
+        }
+        else
+        {
+            lblError.Text = "Please select a Record Form the list to edit.";
+        }
     }
 }
