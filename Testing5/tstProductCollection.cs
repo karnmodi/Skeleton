@@ -100,5 +100,35 @@ namespace Testing2
 
 
 
+        /*************************** Add Method Test **************************************/
+
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            clsProductCollection AllProducts = new clsProductCollection();
+            clsProduct TestProduct = new clsProduct();
+            Int32 PrimaryKey = 0;
+
+            TestProduct.Title = "Title1";
+            TestProduct.Description = "Description of the product";
+            TestProduct.Price = 29.99;
+            TestProduct.Condition = "Good";
+            TestProduct.Availability= false;
+            TestProduct.DateListed = DateTime.Now;
+
+            AllProducts.ThisProduct = TestProduct;
+            PrimaryKey = AllProducts.Add();
+            TestProduct.ProductID = PrimaryKey;
+
+            AllProducts.ThisProduct.Find(PrimaryKey);
+            Assert.AreEqual(AllProducts.ThisProduct, TestProduct);
+            
+        }
+
+
+
+
+
+
     }
 }

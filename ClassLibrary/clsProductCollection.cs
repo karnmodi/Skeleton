@@ -36,6 +36,7 @@ namespace ClassLibrary
 
 
         List<clsProduct> mProductList = new List<clsProduct>();
+        clsProduct mThisProduct = new clsProduct();
         public List<clsProduct> ProductList 
         { 
             get 
@@ -59,6 +60,31 @@ namespace ClassLibrary
             }
         }
 
-        public clsProduct ThisProduct { get; set; }
+        public clsProduct ThisProduct
+        {
+            get
+            {
+                return mThisProduct;
+            }
+            set
+            {
+                mThisProduct = value;
+            }
+        }
+
+        public int Add()
+        {
+
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@Title", mThisProduct.Title);
+            DB.AddParameter("@Description", mThisProduct.Description);
+            DB.AddParameter("@Price", mThisProduct.Price);
+            DB.AddParameter("@Condition", mThisProduct.Condition);
+            DB.AddParameter("@Availability", mThisProduct.Availability);
+            DB.AddParameter("@DateListed", mThisProduct.DateListed);
+
+            return DB.Execute("stpr_tblProduct_Insert");
+
+        }
     }
 }
