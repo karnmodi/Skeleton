@@ -9,7 +9,9 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            <asp:ListBox ID="lstUsersList" runat="server" style="z-index: 1; left: 10px; top: 15px; position: absolute; height: 332px; width: 385px"></asp:ListBox>
         </div>
+        <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 110px; top: 367px; position: absolute"></asp:Label>
     </form>
 </body>
 </html>

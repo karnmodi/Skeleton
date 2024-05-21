@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Xml.Linq;
 using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
@@ -16,17 +18,35 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void btnOK_Click(object sender, EventArgs e)
     {
         clsUser AUser = new clsUser();
-        AUser.UserID = Convert.ToInt32(txtUserID.Text);
-        AUser.Username = txtUsername.Text;
-        AUser.Email= txtEmail.Text;
-        AUser.Password= txtPassword.Text;   
-        AUser.Address = txtAddress.Text;
-        AUser.Phone = txtPhone.Text;
-        AUser.Active = Convert.ToBoolean(chkActive.Checked);
-        AUser.DateAdded = Convert.ToDateTime(txtDateAdded.Text);
+        
 
-        Session["AUser"] = AUser;
-        Response.Redirect("UsersViewer.aspx");
+        string Username = txtUsername.Text;
+        string Email = txtEmail.Text;
+        string Password = txtPassword.Text;
+        string Address = txtAddress.Text;
+        string PhoneNumber = txtPhone.Text;
+        string DateAdded = txtDateAdded.Text;
+        Boolean Active = chkActive.Checked;
+
+
+        string Error = "";
+        Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
+        if (Error == "")
+        {
+            AUser.Username = Username;
+            AUser.Email = Email ;
+            AUser.Password= Password;
+            AUser.Address= Address;
+            AUser.Phone = PhoneNumber;
+            AUser.DateAdded = Convert.ToDateTime(DateAdded);
+            AUser.Active = Convert.ToBoolean(Active);
+            Session["AUser"] = AUser;
+            Response.Redirect("UsersViewer.aspx");
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
     }
 
     protected void btnFind_Click(object sender, EventArgs e)

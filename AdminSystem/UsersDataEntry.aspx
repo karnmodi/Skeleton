@@ -33,9 +33,9 @@
             <asp:Label ID="lblPhone" runat="server" style="z-index: 1; left: 10px; top: 235px; position: absolute; bottom: 310px" Text="Phone" width="114px"></asp:Label>
             <asp:TextBox ID="txtPhone" runat="server" style="z-index: 1; left: 130px; top: 235px; position: absolute"></asp:TextBox>
             <br />
+            <asp:Label ID="lblDateAdded" runat="server" style="z-index: 1; left: 10px; position: absolute; bottom: 271px" Text="DateAdded" width="114px"></asp:Label>
             <br />
             <asp:TextBox ID="txtDateAdded" runat="server" style="z-index: 1; left: 130px; top: 279px; position: absolute"></asp:TextBox>
-            <asp:Label ID="lblDateAdded" runat="server" style="z-index: 1; left: 10px; position: absolute; bottom: 266px" Text="DateAdded" width="114px"></asp:Label>
             <br />
             <br />
             <asp:CheckBox ID="chkActive" runat="server" style="z-index: 1; left: 10px; top: 323px; position: absolute" />
