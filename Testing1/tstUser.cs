@@ -7,12 +7,285 @@ namespace Testing1
     [TestClass]
     public class tstUser
     {
+
+        string Username = "Username";
+        string Email = "ab@gmail.com";
+        string Password = "12345ABSC";
+        string Address = "Gateway House, Leicester, LE1 9BH";
+        string PhoneNumber = "1234567890";
+        string DateAdded = DateTime.Now.Date.ToString();
+        bool Active = false;
+
         [TestMethod]
         public void InstanceOK()
         {
             clsUser AUser = new clsUser();
             Assert.IsNotNull(AUser);
         }
+
+
+
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            clsUser AUser = new clsUser();
+            String Error = "";
+            Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+
+
+        [TestMethod]
+        public void UsernameMinLessOne()
+        {
+            clsUser AUser = new clsUser();
+            String Error = "";
+            String Username = "";
+             Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void UsernameMin()
+        {
+            clsUser AUser = new clsUser();
+            String Error = "";
+            String Username = "u";
+             Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void UsernameMinPlusOne()
+        {
+            clsUser AUser = new clsUser();
+            String Error = "";
+            String Username = "uu";
+             Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void UsernameMaxLessOne()
+        {
+            clsUser AUser = new clsUser();
+            String Error = "";
+            String Username = "";
+            Username = Username.PadRight(49, 'U');
+             Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void UsernameMax()
+        {
+            clsUser AUser = new clsUser();
+            String Error = "";
+            String Username = "";
+            Username = Username.PadRight(50, 'U');
+             Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void UsernameMaxPlusOne()
+        {
+            clsUser AUser = new clsUser();
+            String Error = "";
+            String Username = "";
+            Username = Username.PadRight(51, 'U');
+             Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void UsernameMid()
+        {
+            clsUser AUser = new clsUser();
+            String Error = "";
+            String Username = "";
+            Username = Username.PadRight(25, 'C');
+             Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void UsernameExtremeMAX()
+        {
+            clsUser AUser = new clsUser();
+            String Error = "";
+            String Username = "";
+            Username = Username.PadRight(500, 'C');
+             Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+
+
+
+        [TestMethod]
+        public void PhoneNumberMinLessOne()
+        {
+            clsUser AUser = new clsUser();
+            String Error = "";
+            string PhoneNumber = "12345";
+             Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void PhoneNumberMin()
+        {
+            clsUser AUser = new clsUser();
+            String Error = "";
+            string PhoneNumber = "123456";
+             Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void PhoneNumberMinPlusOne()
+        {
+            clsUser AUser = new clsUser();
+            String Error = "";
+            string PhoneNumber = "1234567";
+             Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void PhoneNumberMaxLessOne()
+        {
+            clsUser AUser = new clsUser();
+            String Error = "";
+            string PhoneNumber = "12345678912345";
+             Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PhoneNumberMax()
+        {
+            clsUser AUser = new clsUser();
+            String Error = "";
+            string PhoneNumber = "123456789123456";
+             Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void PhoneNumberMaxPlusOne()
+        {
+            clsUser AUser = new clsUser();
+            String Error = "";
+            string PhoneNumber = "1234567891234567";
+             Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PhoneNumberMid()
+        {
+            clsUser AUser = new clsUser();
+            String Error = "";
+            string PhoneNumber = "1234567";
+             Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+
+
+
+        [TestMethod]
+        public void DateAddedExtremeMin()
+        {
+            clsUser AUser = new clsUser();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(-100);
+            String DateAdded = TestDate.ToString();
+             Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateAddedMinLessOne()
+        {
+            clsUser AUser = new clsUser();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(-1);
+            String DateAdded = TestDate.ToString();
+             Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void DateAddedMin()
+        {
+            clsUser AUser = new clsUser();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            String DateAdded = TestDate.ToString();
+             Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void DateAddedMinPlusOne()
+        {
+            clsUser AUser = new clsUser();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(1);
+            String DateAdded = TestDate.ToString();
+             Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void DateAddedExtremeMAX()
+        {
+            clsUser AUser = new clsUser();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(100);
+            String DateAdded = TestDate.ToString();
+             Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void DateAddedInvalidFormat()
+        {
+            clsUser AUser = new clsUser();
+            String Error = "";
+            String DateAdded = "This is not a DATE";
+             Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+
+
 
 
         [TestMethod]
