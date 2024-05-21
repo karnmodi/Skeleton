@@ -137,5 +137,46 @@ namespace ClassLibrary
                 return false;
             }
         }
+
+        public string Valid(string username, string email, string password, string address, string phoneNumber, string dateAdded)
+        {
+            String Error = "";
+            DateTime mDate;
+
+            if(username.Length <= 0)
+            {
+                Error += "Username cant be empty.";
+            }
+            if(username.Length >= 51)
+            {
+                Error += "Username Must be lesser than 50 Characters.";
+            }
+            if(phoneNumber.Length < 6)
+            {
+                Error += "Smallest Phone number would be 6 digit Long.";
+            }
+            if(phoneNumber.Length >= 16)
+            {
+                Error += "Phone Number must be smaller than or 15 Digits.";
+            }
+
+            try
+            {
+                mDate = Convert.ToDateTime(dateAdded);
+                if(mDate > DateTime.Now.Date)
+                {
+                    Error += "Date cant be in the future.";
+                }
+                if(mDate < DateTime.Now.Date)
+                {
+                    Error += "Date cant be in the Past.";
+                }
+            }
+            catch
+            {
+                Error += "Invalid Data type entered for DAte.";
+            }
+            return Error;
+        }
     }
 }
