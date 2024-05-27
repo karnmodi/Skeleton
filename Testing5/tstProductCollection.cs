@@ -161,6 +161,72 @@ namespace Testing2
             AllProducts.Update();
             AllProducts.ThisProduct.Find(PrimaryKey);
             Assert.AreEqual(AllProducts.ThisProduct, TestProduct);
+        }/********************************** Update Method Test ************************************/
+
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            clsProductCollection AllProducts = new clsProductCollection();
+            clsProduct TestProduct = new clsProduct();
+
+            Int32 PrimaryKey = 0;
+
+            TestProduct.Title = "Title152";
+            TestProduct.Description= "Descritpion of the day";
+            TestProduct.Price = 250.56;
+            TestProduct.Condition = "Good";
+            TestProduct.Availability = true;
+            TestProduct.DateListed = DateTime.Now;
+            
+            AllProducts.ThisProduct = TestProduct;
+
+            PrimaryKey = AllProducts.Add();
+            TestProduct.ProductID = PrimaryKey;
+
+
+            TestProduct.Title = "Title222";
+            TestProduct.Description = "Descritpion of the Secondday";
+            TestProduct.Price = 254.56;
+            TestProduct.Condition = "Not Good";
+            TestProduct.Availability = false;
+            TestProduct.DateListed = DateTime.Now;
+
+            AllProducts.ThisProduct = TestProduct;
+            AllProducts.Update();
+            AllProducts.ThisProduct.Find(PrimaryKey);
+            Assert.AreEqual(AllProducts.ThisProduct, TestProduct);
+        }
+
+
+        /********************************** Delete Method Test ************************************/
+
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            clsProductCollection AllProducts = new clsProductCollection();
+            clsProduct TestProduct = new clsProduct();
+
+            Int32 PrimaryKey = 0;
+
+            TestProduct.Title = "Title152";
+            TestProduct.Description = "Descritpion of the day";
+            TestProduct.Price = 250.56;
+            TestProduct.Condition = "Good";
+            TestProduct.Availability = true;
+            TestProduct.DateListed = DateTime.Now;
+
+            AllProducts.ThisProduct = TestProduct;
+
+            PrimaryKey = AllProducts.Add();
+            TestProduct.ProductID = PrimaryKey;
+
+
+            AllProducts.ThisProduct.Find(PrimaryKey);
+
+            AllProducts.Delete();
+            Boolean Found = AllProducts.ThisProduct.Find(PrimaryKey);
+
+            Assert.IsFalse(Found);
         }
 
 

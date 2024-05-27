@@ -8,7 +8,10 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
+        <div style="height: 382px; width: 512px;">
+            <asp:Button ID="btnNo" runat="server" style="z-index: 1; left: 257px; top: 237px; position: absolute; height: 29px; width: 42px;" Text="No" OnClick="btnNo_Click" />
+            <asp:Button ID="btnYes" runat="server" OnClick="btnYes_Click" style="z-index: 1; left: 144px; top: 239px; position: absolute" Text="Yes" />
+            <asp:Label ID="lbltext" runat="server" style="z-index: 1; left: 117px; top: 165px; position: absolute; width: 279px" Text="Are you sure,<br> You want to Delete this Product?"></asp:Label>
         </div>
     </form>
 </body>

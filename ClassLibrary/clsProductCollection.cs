@@ -100,5 +100,12 @@ namespace ClassLibrary
 
             DB.Execute("stpr_tblProduct_Update");
         }
+
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@ProductID", mThisProduct.ProductID);
+            DB.Execute("stpr_tblProduct_Delete");
+        }
     }
 }

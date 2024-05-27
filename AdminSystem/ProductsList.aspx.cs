@@ -52,4 +52,23 @@ public partial class _1_List : System.Web.UI.Page
             lblError.Text = "Please select a Record Form the list to edit.";
         }
     }
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        Int32 ProductID;
+
+        if (lstProductsList.SelectedIndex != -1)
+        {
+            ProductID  = Convert.ToInt32(lstProductsList.SelectedValue);
+            Session["ProductID"] = ProductID;
+
+            Response.Redirect("ProductsConfirmDelete.aspx");
+
+        }
+        else
+        {
+            lblError.Text = "Please select a product from the List to Delete.";
+        }
+
+    }
 }
