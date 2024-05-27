@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="tstProduct.cs" />
+    <Compile Include="tstProductAdmin.cs" />
     <Compile Include="tstProductCollection.cs" />
   </ItemGroup>
   <ItemGroup>

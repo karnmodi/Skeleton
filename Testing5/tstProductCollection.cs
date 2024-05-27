@@ -8,6 +8,9 @@ namespace Testing2
     [TestClass]
     public class tstProductCollection
     {
+
+        /****************** Instance of the class Test *********************/
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -15,6 +18,8 @@ namespace Testing2
             Assert.IsNotNull(AllProducts);
         }
 
+
+        /************************* Property OK Tests ************************/
 
         [TestMethod]
         public void ProuctListOK()
@@ -102,7 +107,7 @@ namespace Testing2
 
         /*************************** Add Method Test **************************************/
 
-        //[TestMethod]
+        [TestMethod]
         public void AddMethodOK()
         {
             clsProductCollection AllProducts = new clsProductCollection();
@@ -249,7 +254,7 @@ namespace Testing2
             {
                 OK = false; 
             }
-            Assert.IsTrue(OK);
+            Assert.IsFalse(OK);
         }
     }
 }
