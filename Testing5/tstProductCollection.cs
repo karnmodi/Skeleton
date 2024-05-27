@@ -61,7 +61,7 @@ namespace Testing2
             TestItem.Availability = true;
             TestItem.DateListed = DateTime.Now.Date;
 
-            
+
             AllProducts.ThisProduct = TestItem;
 
             Assert.AreEqual(AllProducts.ThisProduct, TestItem);
@@ -95,7 +95,7 @@ namespace Testing2
         public void TwoRecordsPresent()
         {
             clsProductCollection AllProducts = new clsProductCollection();
-            Assert.AreEqual(AllProducts.Count,AllProducts.Count);
+            Assert.AreEqual(AllProducts.Count, AllProducts.Count);
         }
 
 
@@ -113,7 +113,7 @@ namespace Testing2
             TestProduct.Description = "Description of the product";
             TestProduct.Price = 29.99;
             TestProduct.Condition = "Good";
-            TestProduct.Availability= false;
+            TestProduct.Availability = false;
             TestProduct.DateListed = DateTime.Now;
 
             AllProducts.ThisProduct = TestProduct;
@@ -122,7 +122,7 @@ namespace Testing2
 
             AllProducts.ThisProduct.Find(PrimaryKey);
             Assert.AreEqual(AllProducts.ThisProduct, TestProduct);
-            
+
         }
 
 
@@ -138,46 +138,12 @@ namespace Testing2
             Int32 PrimaryKey = 0;
 
             TestProduct.Title = "Title152";
-            TestProduct.Description= "Descritpion of the day";
+            TestProduct.Description = "Descritpion of the day";
             TestProduct.Price = 250.56;
             TestProduct.Condition = "Good";
             TestProduct.Availability = true;
             TestProduct.DateListed = DateTime.Now;
-            
-            AllProducts.ThisProduct = TestProduct;
 
-            PrimaryKey = AllProducts.Add();
-            TestProduct.ProductID = PrimaryKey;
-
-
-            TestProduct.Title = "Title222";
-            TestProduct.Description = "Descritpion of the Secondday";
-            TestProduct.Price = 254.56;
-            TestProduct.Condition = "Not Good";
-            TestProduct.Availability = false;
-            TestProduct.DateListed = DateTime.Now;
-
-            AllProducts.ThisProduct = TestProduct;
-            AllProducts.Update();
-            AllProducts.ThisProduct.Find(PrimaryKey);
-            Assert.AreEqual(AllProducts.ThisProduct, TestProduct);
-        }/********************************** Update Method Test ************************************/
-
-        [TestMethod]
-        public void UpdateMethodOK()
-        {
-            clsProductCollection AllProducts = new clsProductCollection();
-            clsProduct TestProduct = new clsProduct();
-
-            Int32 PrimaryKey = 0;
-
-            TestProduct.Title = "Title152";
-            TestProduct.Description= "Descritpion of the day";
-            TestProduct.Price = 250.56;
-            TestProduct.Condition = "Good";
-            TestProduct.Availability = true;
-            TestProduct.DateListed = DateTime.Now;
-            
             AllProducts.ThisProduct = TestProduct;
 
             PrimaryKey = AllProducts.Add();
@@ -230,9 +196,60 @@ namespace Testing2
         }
 
 
+        /********************************** Filter Method Test ************************************/
+
+        [TestMethod]
+        public void ReportByProductNameMethodOK()
+        {
+
+            clsProductCollection AllProducts = new clsProductCollection();
+
+            clsProductCollection FilteredProducts = new clsProductCollection();
+            FilteredProducts.ReportByProductName("");
+
+            Assert.AreEqual(AllProducts.Count, FilteredProducts.Count) ;
 
 
+        }
+        
+        [TestMethod]
+        public void ReportByProductNameNoneFound()
+        {
+
+            clsProductCollection FilteredProducts = new clsProductCollection();
+            FilteredProducts.ReportByProductName("Product Name A");
+
+            Assert.AreEqual(0, FilteredProducts.Count);
 
 
+        }
+
+
+        [TestMethod]
+
+        public void ReportByProductNameTestDataFound()
+        {
+            clsProductCollection FilteredProducts = new clsProductCollection();
+            Boolean OK = true;
+            FilteredProducts.ReportByProductName("Database Management");
+
+            if(FilteredProducts.Count == 2)
+            {
+                if (FilteredProducts.ProductList[0].ProductID != 2)
+                {
+                    OK = false;
+                }
+                if(FilteredProducts.ProductList[0].ProductID != 3)
+                {
+                    OK = false; 
+                }
+
+            }
+            else
+            {
+                OK = false; 
+            }
+            Assert.IsTrue(OK);
+        }
     }
 }

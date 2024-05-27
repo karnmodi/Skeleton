@@ -71,4 +71,14 @@ public partial class _1_List : System.Web.UI.Page
         }
 
     }
+
+    protected void txtFilterBox_TextChanged(object sender, EventArgs e)
+    {
+        clsProductCollection AProduct = new clsProductCollection(); 
+        AProduct.ReportByProductName(txtFilterBox.Text);
+        lstProductsList.DataSource = AProduct.ProductList;
+        lstProductsList.DataValueField = "ProductID";
+        lstProductsList.DataTextField = "Title";
+        lstProductsList.DataBind();
+    }
 }

@@ -11,13 +11,22 @@ namespace ClassLibrary
 
         public clsProductCollection() 
         {
-            Int32 Index = 0;
-            Int32 RecordCount = 0;
-            clsDataConnection  DB = new clsDataConnection();
+            
+            clsDataConnection DB = new clsDataConnection();
             DB.Execute("stpr_AllProducts");
-            RecordCount = DB.Count;
 
-            while(Index < RecordCount)
+            PopulateArray(DB);
+        }
+
+        void PopulateArray(clsDataConnection DB)
+        {
+            Int32 Index = 0;
+            Int32 RecordCount;
+            RecordCount = DB.Count;
+            mProductList = new List<clsProduct>();  
+
+
+            while (Index < RecordCount)
             {
                 clsProduct AProduct = new clsProduct();
 
@@ -26,7 +35,7 @@ namespace ClassLibrary
                 AProduct.Description = Convert.ToString(DB.DataTable.Rows[Index]["Description"]);
                 AProduct.Price = Convert.ToDouble(DB.DataTable.Rows[Index]["Price"]);
                 AProduct.Condition = Convert.ToString(DB.DataTable.Rows[Index]["Condition"]);
-                AProduct.Availability  = Convert.ToBoolean(DB.DataTable.Rows[Index]["Availability"]);
+                AProduct.Availability = Convert.ToBoolean(DB.DataTable.Rows[Index]["Availability"]);
                 AProduct.DateListed = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateListed"]);
 
                 mProductList.Add(AProduct);
@@ -106,6 +115,15 @@ namespace ClassLibrary
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@ProductID", mThisProduct.ProductID);
             DB.Execute("stpr_tblProduct_Delete");
+        }
+
+        public void ReportByProductName(string ProductName)
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@ProductName", ProductName);
+            DB.Execute("stpr_tblProduct_FilterByProductName");
+
+            PopulateArray(DB);
         }
     }
 }
