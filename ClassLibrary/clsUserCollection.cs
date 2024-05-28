@@ -15,16 +15,25 @@ namespace ClassLibrary
 
         public clsUserCollection()
         {
-            Int32 Index = 0;
-            Int32 RecordCount = 0;
+
             clsDataConnection DB = new clsDataConnection();
             DB.Execute("stpr_AllUser");
+            PopulateArray(DB);
+        }
+
+
+        void PopulateArray(clsDataConnection DB)
+        {
+            Int32 Index = 0;
+            Int32 RecordCount;
+
             RecordCount = DB.Count;
+
+            mUserList = new List<clsUser>();
 
             while (Index < RecordCount)
             {
                 clsUser AUser = new clsUser();
-
                 AUser.UserID = Convert.ToInt32(DB.DataTable.Rows[Index]["UserID"]);
                 AUser.Username = Convert.ToString(DB.DataTable.Rows[Index]["Username"]);
                 AUser.Email = Convert.ToString(DB.DataTable.Rows[Index]["Email"]);
@@ -33,7 +42,6 @@ namespace ClassLibrary
                 AUser.Phone = Convert.ToString(DB.DataTable.Rows[Index]["PhoneNumber"]);
                 AUser.Active = Convert.ToBoolean(DB.DataTable.Rows[Index]["Active"]);
                 AUser.DateAdded = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateAdded"]);
-
                 mUserList.Add(AUser);
                 Index++;
             }
@@ -92,6 +100,15 @@ namespace ClassLibrary
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@UserID", mThisUser.UserID);
             DB.Execute("stpr_tblUser_Delete");
+        }
+
+        public void ReportByUsername(string Username)
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@Username", Username);
+            DB.Execute("stpr_tblUser_FilterByUsername");
+
+            PopulateArray(DB);
         }
 
         public void Update()

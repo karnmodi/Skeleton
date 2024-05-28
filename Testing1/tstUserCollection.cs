@@ -182,8 +182,57 @@ namespace Testing1
 
             AllUsers.Delete();
             Boolean Found = AllUsers.ThisUser.Find(PrimaryKey);
-
             Assert.IsFalse(Found);
+        }
+
+
+
+        [TestMethod]
+        public void ReportByUsernameMethodOK()
+        {
+
+            clsUserCollection AllUsers = new clsUserCollection();
+
+            clsUserCollection FilteredUsers = new clsUserCollection();
+            FilteredUsers.ReportByUsername("");
+
+            Assert.AreEqual(AllUsers.Count, FilteredUsers.Count);
+
+
+        }
+
+        [TestMethod]
+        public void ReportByUsernameNoneFound()
+        {
+            clsUserCollection FilteredUsers = new clsUserCollection();
+            FilteredUsers.ReportByUsername("SSSSS");
+            Assert.AreEqual(0, FilteredUsers.Count);
+        }
+
+
+        [TestMethod]
+
+        public void ReportByUsernameTestDataFound()
+        {
+            clsUserCollection FilteredUsers = new clsUserCollection();
+            Boolean OK = true;
+            FilteredUsers.ReportByUsername("Samar Hayat");
+            if (FilteredUsers.Count == 2)
+            {
+                if (FilteredUsers.UserList[0].UserID != 24)
+                {
+                    OK = false;
+                }
+                if (FilteredUsers.UserList[0].UserID != 25)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            Assert.IsFalse(OK);
         }
     }
 }
