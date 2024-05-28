@@ -87,6 +87,13 @@ namespace ClassLibrary
             return DB.Execute("stpr_tblUser_Insert");
         }
 
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@UserID", mThisUser.UserID);
+            DB.Execute("stpr_tblUser_Delete");
+        }
+
         public void Update()
         {
             clsDataConnection DB = new clsDataConnection();

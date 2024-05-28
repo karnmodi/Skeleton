@@ -155,5 +155,35 @@ namespace Testing1
             AllUsers.ThisUser.Find(PrimaryKey);
             Assert.AreEqual(AllUsers.ThisUser, TestUser);
         }
+
+
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            clsUserCollection AllUsers = new clsUserCollection();
+            clsUser TestUser = new clsUser();
+
+            Int32 PrimaryKey = 0;
+
+            TestUser.UserID = PrimaryKey;
+            TestUser.Username = "SAMAR HAYAT";
+            TestUser.Email = "sh@gmail.com";
+            TestUser.Password = "2521Samar";
+            TestUser.Address = "Le3 46a, United Kingdom";
+
+            TestUser.Phone = "0123455589";
+            TestUser.DateAdded = DateTime.Now;
+            TestUser.Active = true;
+
+            AllUsers.ThisUser = TestUser;
+            PrimaryKey = AllUsers.Add();
+            TestUser.UserID = PrimaryKey;
+            AllUsers.ThisUser.Find(PrimaryKey);
+
+            AllUsers.Delete();
+            Boolean Found = AllUsers.ThisUser.Find(PrimaryKey);
+
+            Assert.IsFalse(Found);
+        }
     }
 }
