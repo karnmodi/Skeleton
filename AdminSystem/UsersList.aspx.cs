@@ -47,4 +47,20 @@ public partial class _1_List : System.Web.UI.Page
             lblError.Text = "Please select to edit.";
         }
     }
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        Int32 UserID;
+        if (lstUsersList.SelectedIndex != -1)
+        {
+            UserID = Convert.ToInt32(lstUsersList.SelectedValue);
+            Session["UserID"] = UserID;
+            Response.Redirect("UsersConfirmDelete.aspx");
+
+        }
+        else
+        {
+            lblError.Text = "Select Entry.";
+        }
+    }
 }
