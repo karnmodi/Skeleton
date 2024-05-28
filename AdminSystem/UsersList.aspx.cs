@@ -32,4 +32,19 @@ public partial class _1_List : System.Web.UI.Page
         Session["UserID"] = -1;
         Response.Redirect("UsersDataEntry.aspx");
     }
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        Int32 UserID;
+        if (lstUsersList.SelectedIndex != -1)
+        {
+            UserID = Convert.ToInt32(lstUsersList.SelectedValue);
+            Session["UserID"] = UserID;
+            Response.Redirect("UsersDataEntry.aspx");
+        }
+        else
+        {
+            lblError.Text = "Please select to edit.";
+        }
+    }
 }
