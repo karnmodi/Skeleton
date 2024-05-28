@@ -2,11 +2,11 @@
 
 namespace ClassLibrary
 {
-    public class clsProductAdmin
+    public class clsUserAdmin
     {
 
         private Int32 mAdminID;
-        private String mAdminName;
+        private String mUsername;
         private String mPassword;
         private String mDepartment;
 
@@ -22,15 +22,15 @@ namespace ClassLibrary
             }
         }
         
-        public string AdminName
+        public string Username
         {
             get
             {
-                return mAdminName;
+                return mUsername;
             }
             set
             {
-                mAdminName = value;
+                mUsername = value;
             }
         }
 
@@ -58,18 +58,18 @@ namespace ClassLibrary
             }
         }
 
-        public bool FindAdmin(string adminName, string password)
+        public bool FindAdmin(string Username, string Password)
         {
             clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@AdminName", adminName);
-            DB.AddParameter("@Password", password);
+            DB.AddParameter("@Username", Username);
+            DB.AddParameter("@Password", Password);
 
-            DB.Execute("stpr_tblAdmin_FindAdminNamePW");
+            DB.Execute("stpr_tblAdmin_FindUsernamePW");
 
             if (DB.Count == 1)
             {
                 mAdminID = Convert.ToInt32(DB.DataTable.Rows[0]["AdminID"]);
-                mAdminName = Convert.ToString(DB.DataTable.Rows[0]["AdminName"]);
+                mUsername = Convert.ToString(DB.DataTable.Rows[0]["AdminName"]);
                 mPassword = Convert.ToString(DB.DataTable.Rows[0]["Password"]);
                 mDepartment = Convert.ToString(DB.DataTable.Rows[0]["Department"]);
 
