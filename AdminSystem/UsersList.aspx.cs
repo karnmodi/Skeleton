@@ -63,4 +63,25 @@ public partial class _1_List : System.Web.UI.Page
             lblError.Text = "Select Entry.";
         }
     }
+
+    protected void btnApplyFilter_Click(object sender, EventArgs e)
+    {
+        clsUserCollection AUser = new clsUserCollection();
+        AUser.ReportByUsername(txtUserName.Text);
+        lstUsersList.DataSource = AUser.UserList;
+        lstUsersList.DataValueField = "UserID";
+        lstUsersList.DataTextField = "Username";
+        lstUsersList.DataBind();
+    }
+
+    protected void lblClearFilter_Click(object sender, EventArgs e)
+    {
+        clsUserCollection AUser = new clsUserCollection();
+        AUser.ReportByUsername("");
+        txtUserName.Text = "";
+        lstUsersList.DataSource = AUser.UserList;
+        lstUsersList.DataValueField = "UserID";
+        lstUsersList.DataTextField = "Username";
+        lstUsersList.DataBind();
+    }
 }
