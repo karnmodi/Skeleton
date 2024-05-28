@@ -43,9 +43,9 @@ namespace Testing1
         public void CountPropertyOK()
         {
             clsUserCollection AllUsers = new clsUserCollection();
-            Int32 nCount = 0;
-            AllUsers.Count = nCount;
-            Assert.AreEqual(AllUsers.Count, AllUsers.Count);
+            Int32 SomeCount = 0;
+            AllUsers.Count = SomeCount;
+            Assert.AreEqual(AllUsers.Count, SomeCount);
         }
 
         [TestMethod]
@@ -98,7 +98,29 @@ namespace Testing1
         public void TwoRecordsPresent()
         {
             clsUserCollection AllUsers = new clsUserCollection();
-            Assert.AreEqual(AllUsers.Count, AllUsers.Count);
+            Assert.AreEqual(AllUsers.Count,2);
+        }
+
+
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            clsUserCollection AllUsers = new clsUserCollection();
+            clsUser TestUser = new clsUser();
+            Int32 PrimaryKey = 0;
+            TestUser.Username = "Samar Hayat";
+            TestUser.Email = "samarhayat@gmail.com";
+            TestUser.Password = "abcdas12";
+            TestUser.Address = "Le3 46a, United Kingdom";
+            TestUser.Phone = "0123456789";
+            TestUser.DateAdded = DateTime.Now;
+            TestUser.Active = false;
+            AllUsers.ThisUser = TestUser;
+            PrimaryKey = AllUsers.Add();
+            TestUser.UserID = PrimaryKey;
+            AllUsers.ThisUser.Find(PrimaryKey);
+            Assert.AreEqual(AllUsers.ThisUser, TestUser);
+
         }
     }
 }
