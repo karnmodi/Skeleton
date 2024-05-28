@@ -26,4 +26,10 @@ public partial class _1_List : System.Web.UI.Page
         lstUsersList.DataTextField = "Username";
         lstUsersList.DataBind();
     }
+
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        Session["UserID"] = -1;
+        Response.Redirect("UsersDataEntry.aspx");
+    }
 }

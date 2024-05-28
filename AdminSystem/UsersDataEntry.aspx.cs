@@ -40,8 +40,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AUser.Phone = PhoneNumber;
             AUser.DateAdded = Convert.ToDateTime(DateAdded);
             AUser.Active = Convert.ToBoolean(Active);
-            Session["AUser"] = AUser;
-            Response.Redirect("UsersViewer.aspx");
+            
+            clsUserCollection UsersList = new clsUserCollection();
+            UsersList.ThisUser = AUser;
+            UsersList.Add();
+            Response.Redirect("UsersList.aspx");
         }
         else
         {
