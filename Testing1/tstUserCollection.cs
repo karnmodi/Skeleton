@@ -122,5 +122,38 @@ namespace Testing1
             Assert.AreEqual(AllUsers.ThisUser, TestUser);
 
         }
+
+        [TestMethod]
+        public void EditMethodOK()
+        {
+            clsUserCollection AllUsers = new clsUserCollection();
+            clsUser TestUser = new clsUser();
+            Int32 PrimaryKey = 0;
+            TestUser.Username = "Samar Hayat";
+            TestUser.Email = "samarhayat@gmail.com";
+            TestUser.Password = "abcdas12";
+
+            TestUser.Address = "Le3 46a, United Kingdom";
+            TestUser.Phone = "0123456789";
+            TestUser.DateAdded = DateTime.Now;
+            TestUser.Active = false;
+
+            AllUsers.ThisUser = TestUser;
+
+            PrimaryKey = AllUsers.Add();
+            TestUser.UserID = PrimaryKey;
+            TestUser.Username = "SAMAR HAYAT";
+            TestUser.Email = "sh@gmail.com";
+            TestUser.Password = "2521Samar";
+            TestUser.Address = "Le3 46a, United Kingdom";
+
+            TestUser.Phone = "0123455589";
+            TestUser.DateAdded = DateTime.Now;
+            TestUser.Active = true;
+            AllUsers.ThisUser = TestUser;
+            AllUsers.Update();
+            AllUsers.ThisUser.Find(PrimaryKey);
+            Assert.AreEqual(AllUsers.ThisUser, TestUser);
+        }
     }
 }

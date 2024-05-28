@@ -86,5 +86,20 @@ namespace ClassLibrary
 
             return DB.Execute("stpr_tblUser_Insert");
         }
+
+        public void Update()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@UserID", mThisUser.UserID);
+            DB.AddParameter("@Username", mThisUser.Username);
+            DB.AddParameter("@Email", mThisUser.Email);
+            DB.AddParameter("@Password", mThisUser.Password);
+            DB.AddParameter("@Address", mThisUser.Address);
+            DB.AddParameter("@PhoneNumber", mThisUser.Phone);
+            DB.AddParameter("@Active", mThisUser.Active);
+            DB.AddParameter("@DateAdded", mThisUser.DateAdded);
+
+            DB.Execute("stpr_tblUser_Update");
+        }
     }
 }

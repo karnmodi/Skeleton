@@ -10,9 +10,33 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+
+    Int32 UserID;
     protected void Page_Load(object sender, EventArgs e)
     {
-        
+        UserID = Convert.ToInt32(Session["UserID"]);
+        if(IsPostBack == false)
+        {
+            if(UserID != -1)
+            {
+                DisplayUser();
+            }
+        }
+    }
+
+    void DisplayUser()
+    {
+        clsUserCollection UsersAll = new clsUserCollection();
+        UsersAll.ThisUser.Find(UserID);
+
+        txtUserID.Text = UsersAll.ThisUser.UserID.ToString();
+        txtUsername.Text = UsersAll.ThisUser.Username.ToString();
+        txtEmail.Text = UsersAll.ThisUser.Email.ToString();
+        txtPassword.Text = UsersAll.ThisUser.Password.ToString();
+        txtAddress.Text = UsersAll.ThisUser.Address.ToString();
+        txtPhone.Text = UsersAll.ThisUser.Phone.ToString();
+        txtDateAdded.Text = UsersAll.ThisUser.DateAdded.ToString();
+        chkActive.Checked = UsersAll.ThisUser.Active;
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
@@ -26,13 +50,14 @@ public partial class _1_DataEntry : System.Web.UI.Page
         string Address = txtAddress.Text;
         string PhoneNumber = txtPhone.Text;
         string DateAdded = txtDateAdded.Text;
-        Boolean Active = chkActive.Checked;
+        string Active = Convert.ToString(chkActive.Checked);
 
 
         string Error = "";
         Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
         if (Error == "")
         {
+            AUser.UserID = UserID;
             AUser.Username = Username;
             AUser.Email = Email ;
             AUser.Password= Password;
@@ -40,11 +65,22 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AUser.Phone = PhoneNumber;
             AUser.DateAdded = Convert.ToDateTime(DateAdded);
             AUser.Active = Convert.ToBoolean(Active);
-            
-            clsUserCollection UsersList = new clsUserCollection();
-            UsersList.ThisUser = AUser;
-            UsersList.Add();
-            Response.Redirect("UsersList.aspx");
+
+            clsUserCollection UserList = new clsUserCollection();
+
+            if (UserID == -1)
+            {
+                UserList.ThisUser = AUser;
+                UserList.Add();
+            }
+            else
+            {
+                UserList.ThisUser.Find(UserID);
+                UserList.ThisUser = AUser;
+                UserList.Update();
+            }
+
+                Response.Redirect("UsersList.aspx");
         }
         else
         {
