@@ -40,7 +40,7 @@ namespace Testing2
             String Error = "";
             String Title = "";
             Error = AProduct.Valid(Title, Description, Price, Condition, Availabilily, DateListed);
-            Assert.AreEqual(Error, "");
+            Assert.AreEqual(Error, "Title may not be empty.\n");
         }
         
         
@@ -98,7 +98,7 @@ namespace Testing2
             String Title = "";
             Title = Title.PadRight(31, 'a');
             Error = AProduct.Valid(Title, Description, Price, Condition, Availabilily, DateListed);
-            Assert.AreEqual(Error, "");
+            Assert.AreEqual(Error, "Title must be lesser than 30 Characters.\n");
         }
         
         
@@ -122,7 +122,7 @@ namespace Testing2
             String Title = "";
             Title = Title.PadRight(300, 'a');
             Error = AProduct.Valid(Title, Description, Price, Condition, Availabilily, DateListed);
-            Assert.AreEqual(Error, "");
+            Assert.AreEqual(Error, "Title must be lesser than 30 Characters.\n");
         }
 
 
@@ -135,7 +135,7 @@ namespace Testing2
             String Error = "";
             String Description = "";
             Error = AProduct.Valid(Title, Description, Price, Condition, Availabilily, DateListed);
-            Assert.AreEqual(Error, "");
+            Assert.AreEqual(Error, "Description cannot be Empty.\n");
         }
         
         
@@ -193,7 +193,7 @@ namespace Testing2
             string Description = "";
             Description = Description.PadRight(501, 'd');
             Error = AProduct.Valid(Title, Description, Price, Condition, Availabilily, DateListed);
-            Assert.AreEqual(Error, "");
+            Assert.AreEqual(Error, "Description cannot be more than 500 Characters.\n");
         }
         
         
@@ -217,7 +217,7 @@ namespace Testing2
             string Description = "";
             Description = Description.PadRight(5000, 'd');
             Error = AProduct.Valid(Title, Description, Price, Condition, Availabilily, DateListed);
-            Assert.AreEqual(Error, "");
+            Assert.AreEqual(Error, "Description cannot be more than 500 Characters.\n");
         }
 
         /********************** Price Validation ************************/
@@ -230,7 +230,7 @@ namespace Testing2
             Double TestPrice = -500.00;
             String Price = TestPrice.ToString();
             Error = AProduct.Valid(Title, Description, Price, Condition, Availabilily, DateListed);
-            Assert.AreEqual(Error, "");
+            Assert.AreEqual(Error, "Price cannot be in Negative and Zero.");
         }
 
         [TestMethod]
@@ -241,7 +241,7 @@ namespace Testing2
             Double TestPrice = 0;
             String Price = TestPrice.ToString();
             Error = AProduct.Valid(Title, Description, Price, Condition, Availabilily, DateListed);
-            Assert.AreEqual(Error, "");
+            Assert.AreEqual(Error, "Price cannot be in Negative and Zero.");
         }
 
         [TestMethod]
@@ -296,7 +296,7 @@ namespace Testing2
             Double TestPrice = 5000.99;
             String Price = TestPrice.ToString();
             Error = AProduct.Valid(Title, Description, Price, Condition, Availabilily, DateListed);
-            Assert.AreEqual(Error, "");
+            Assert.AreEqual(Error, "Price Must be smaller than 4999.99");
         }
 
         [TestMethod]
@@ -318,7 +318,7 @@ namespace Testing2
             Double TestPrice = 10000;
             String Price = TestPrice.ToString();
             Error = AProduct.Valid(Title, Description, Price, Condition, Availabilily, DateListed);
-            Assert.AreEqual(Error, "");
+            Assert.AreEqual(Error, "Price Must be smaller than 4999.99");
         }
 
         [TestMethod]
@@ -329,7 +329,7 @@ namespace Testing2
             
             String Price = "This is Not a Double.";
             Error = AProduct.Valid(Title, Description, Price, Condition, Availabilily, DateListed);
-            Assert.AreEqual(Error, "");
+            Assert.AreEqual(Error, "Price Should in the valid format. E.g., 20.99");
         }
 
 
@@ -343,7 +343,7 @@ namespace Testing2
             String Error = "";
             String Condition = "";
             Error = AProduct.Valid(Title, Description, Price, Condition, Availabilily, DateListed);
-            Assert.AreEqual(Error, "");
+            Assert.AreEqual(Error, "Condition may not be empty.\n");
         }
 
 
@@ -401,7 +401,7 @@ namespace Testing2
             String Condition = "";
             Condition = Condition.PadRight(21, 'C');
             Error = AProduct.Valid(Title, Description, Price, Condition, Availabilily, DateListed);
-            Assert.AreEqual(Error, "");
+            Assert.AreEqual(Error, "Condition must be lesser than 20 Characters.\n");
         }
 
 
@@ -425,7 +425,7 @@ namespace Testing2
             String Condition = "";
             Condition = Condition.PadRight(500, 'C');
             Error = AProduct.Valid(Title, Description, Price, Condition, Availabilily, DateListed);
-            Assert.AreEqual(Error, "");
+            Assert.AreEqual(Error, "Condition must be lesser than 20 Characters.\n");
         }
 
 
@@ -443,7 +443,7 @@ namespace Testing2
 
             string DateListed = TestDate.ToString();
             Error = AProduct.Valid(Title, Description, Price, Condition, Availabilily, DateListed);
-            Assert.AreEqual(Error, "");
+            Assert.AreEqual(Error, "Date cannot be in the past \n");
         }
 
 
@@ -457,7 +457,7 @@ namespace Testing2
 
             string DateListed = TestDate.ToString();
             Error = AProduct.Valid(Title, Description, Price, Condition, Availabilily, DateListed);
-            Assert.AreEqual(Error, "");
+            Assert.AreEqual(Error, "Date cannot be in the past \n");
         }
 
 
@@ -484,7 +484,7 @@ namespace Testing2
 
             string DateListed = TestDate.ToString();
             Error = AProduct.Valid(Title, Description, Price, Condition, Availabilily, DateListed);
-            Assert.AreEqual(Error, "");
+            Assert.AreEqual(Error, "Date cannot be in the future. \n");
         }
 
 
@@ -498,7 +498,7 @@ namespace Testing2
 
             string DateListed = TestDate.ToString();
             Error = AProduct.Valid(Title, Description, Price, Condition, Availabilily, DateListed);
-            Assert.AreEqual(Error, "");
+            Assert.AreEqual(Error, "Date cannot be in the future. \n");
         }
 
 
@@ -511,7 +511,7 @@ namespace Testing2
 
             string DateListed = "This is not a Valid Date Data Type.";
             Error = AProduct.Valid(Title, Description, Price, Condition, Availabilily, DateListed);
-            Assert.AreEqual(Error, "");
+            Assert.AreEqual(Error, "The Date is not in a Valid Format.\n");
         }
 
 
