@@ -92,5 +92,110 @@ namespace Testing5
             Assert.AreEqual(AllReviews.Count, AllReviews.Count);
         }
 
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            clsReviewCollection AllReviews = new clsReviewCollection();
+            clsReview TestReview = new clsReview();
+            Int32 PrimaryKey = 0;
+            TestReview.Category = "Diya Patel";
+            TestReview.Rating = 5;
+            TestReview.Comment = "Good value for money.";
+            TestReview.DatePosted = DateTime.Now;
+            TestReview.Recent = false;
+            AllReviews.ThisReview = TestReview;
+            PrimaryKey = AllReviews.Add();
+            TestReview.ReviewID = PrimaryKey;
+            AllReviews.ThisReview.Find(PrimaryKey);
+            Assert.AreEqual(AllReviews.ThisReview, TestReview);
+
+        }
+
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            clsReviewCollection AllReviews = new clsReviewCollection();
+            clsReview TestReview = new clsReview();
+            Int32 PrimaryKey = 0;
+            TestReview.Category = "Diya Patel";
+            TestReview.Rating = 5;
+            TestReview.Comment = "Good value for money.";
+            TestReview.DatePosted = DateTime.Now;
+            TestReview.Recent = false;
+            AllReviews.ThisReview = TestReview;
+            PrimaryKey = AllReviews.Add();
+            TestReview.Category = "DIYA";
+            TestReview.Rating = 7;
+            TestReview.Comment = "money.";
+            TestReview.DatePosted = DateTime.Now;
+            TestReview.Recent = true;
+            AllReviews.ThisReview = TestReview;
+            AllReviews.Update();
+            AllReviews.ThisReview.Find(PrimaryKey);
+            Assert.AreEqual(AllReviews.ThisReview, TestReview);
+        }
+
+
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            clsReviewCollection AllReviews = new clsReviewCollection();
+            clsReview TestReview = new clsReview();
+            Int32 PrimaryKey = 0;
+            TestReview.ReviewID = PrimaryKey;
+            TestReview.Category = "Diya Patel";
+            TestReview.Rating = 5;
+            TestReview.Comment = "Good value for money.";
+            TestReview.DatePosted = DateTime.Now;
+            TestReview.Recent = false;
+            AllReviews.ThisReview = TestReview;
+            PrimaryKey = AllReviews.Add();
+            TestReview.ReviewID = PrimaryKey;
+            AllReviews.ThisReview.Find(PrimaryKey);
+            AllReviews.Delete();
+            Boolean Found = AllReviews.ThisReview.Find(PrimaryKey);
+            Assert.IsFalse(Found);
+        }
+        [TestMethod]
+        public void ReportByReviewCommentMethodOK()
+        {
+
+            clsReviewCollection AllReviews = new clsReviewCollection();
+            clsReviewCollection FilterReviews = new clsReviewCollection();
+            FilterReviews.ReportByReviewComment("");
+            Assert.AreEqual(AllReviews.Count, FilterReviews.Count);
+        }
+
+        [TestMethod]
+        public void ReportByReviewCommentNoneFound()
+        {
+            clsReviewCollection FilterReviews = new clsReviewCollection();
+            FilterReviews.ReportByReviewComment("DPDP");
+            Assert.AreEqual(0, FilterReviews.Count);
+        }[TestMethod]
+
+        public void ReportByReviewCommentTestDataFound()
+        {
+            clsReviewCollection FilterReviews = new clsReviewCollection();
+            Boolean OK = true;
+            FilterReviews.ReportByReviewComment("Diya P");
+            if (FilterReviews.Count == 2)
+            {
+                if (FilterReviews.ReviewList[0].ReviewID != 24)
+                {
+                    OK = false;
+                }
+                if (FilterReviews.ReviewList[0].ReviewID != 25)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            Assert.IsFalse(OK);
+        }
+
     }
 }
