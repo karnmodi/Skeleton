@@ -14,6 +14,9 @@ public partial class _1_List : System.Web.UI.Page
         {
             DisplayReviews();
         }
+        clsReviewAdmin AnAdmin = new clsReviewAdmin();
+        AnAdmin = (clsReviewAdmin)Session["AnAdmin"];
+        Response.Write("Logged in as : " + AnAdmin.Adminname);
     }
 
     void DisplayReviews()
@@ -81,5 +84,10 @@ public partial class _1_List : System.Web.UI.Page
         {
             lblError.Text = "Select any comment.";
         }
+    }
+
+    protected void btnRMM_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }

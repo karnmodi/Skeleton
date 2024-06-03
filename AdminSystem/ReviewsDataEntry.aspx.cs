@@ -19,6 +19,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
                 DisplayReview();
             }
         }
+        
+        clsReviewAdmin AnAdmin = new clsReviewAdmin();
+        AnAdmin = (clsReviewAdmin)Session["AnAdmin"];
+        Response.Write("Logged in as : " + AnAdmin.Adminname);
     }
 
     void DisplayReview()
@@ -99,6 +103,12 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnCancel_Click(object sender, EventArgs e)
     {
+        Response.Redirect("ReviewsList.aspx");
 
+    }
+
+    protected void btnRMM_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }
