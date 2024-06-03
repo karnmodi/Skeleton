@@ -26,6 +26,9 @@ public partial class ReviewLogin : System.Web.UI.Page
         Password = Convert.ToString(txtPassword.Text);
 
         Found = AnAdmin.FindAdmin(Adminname, Password);
+
+        Session["AnAdmin"] = AnAdmin;
+
         if (txtAdminname.Text == "")
         {
             lblError.Text = "Please Enter Admin Name";
@@ -47,6 +50,6 @@ public partial class ReviewLogin : System.Web.UI.Page
 
     protected void btnCancel_Click(object sender, EventArgs e)
     {
-
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }
