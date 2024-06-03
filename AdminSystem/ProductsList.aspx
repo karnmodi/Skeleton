@@ -119,7 +119,7 @@
             </div>
 
             <div class="form-group">
-                <asp:Label ID="Label1" runat="server" Text="Enter a Product Name" />
+                <asp:Label ID="Label1" runat="server" Text="Enter a Product Name: (Press Enter)" />
                 <asp:TextBox ID="txtFilterBox" runat="server" OnTextChanged="txtFilterBox_TextChanged" AutoPostBack="true" onkeydown="handleEnterKey(event, this.id)" />
             </div>
 
