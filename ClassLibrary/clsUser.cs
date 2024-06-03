@@ -151,7 +151,31 @@ namespace ClassLibrary
             {
                 Error += "Username Must be lesser than 50 Characters.";
             }
-            if(phoneNumber.Length < 6)
+            if (email.Length <= 0)
+            {
+                Error += "Email cant be empty.";
+            }
+            if (email.Length >= 31)
+            {
+                Error += "Email Must be lesser than 30 Characters.";
+            }
+            if (password.Length <= 0)
+            {
+                Error += "Password cant be empty.";
+            }
+            if (password.Length >= 51)
+            {
+                Error += "Password Must be lesser than 30 Characters.";
+            }
+            if (address.Length <= 0)
+            {
+                Error += "Address cant be empty.";
+            }
+            if (address.Length >= 251)
+            {
+                Error += "Address Must be lesser than 250 Characters.";
+            }
+            if (phoneNumber.Length < 6)
             {
                 Error += "Smallest Phone number would be 6 digit Long.";
             }

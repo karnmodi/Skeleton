@@ -21,6 +21,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
             {
                 DisplayUser();
             }
+            clsUserAdmin AnUser = new clsUserAdmin();
+            AnUser = (clsUserAdmin)Session["AnAdmin"];
+            Response.Write("Logged in as : " + AnUser.Username);
         }
     }
 
@@ -107,5 +110,17 @@ public partial class _1_DataEntry : System.Web.UI.Page
             chkActive.Checked = AUser.Active;
             txtDateAdded.Text = AUser.DateAdded.ToString();
         }
+    }
+
+    protected void btnMainMenu_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("TeamMainMenu.aspx");
+
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("UsersList.aspx");
+
     }
 }

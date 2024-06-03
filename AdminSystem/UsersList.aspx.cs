@@ -15,6 +15,10 @@ public partial class _1_List : System.Web.UI.Page
             DisplayUserss();
         }
 
+        clsUserAdmin AnUser = new clsUserAdmin();
+        AnUser = (clsUserAdmin)Session["AnAdmin"];
+        Response.Write("Logged in as : " + AnUser.Username);
+
 
     }
 
@@ -83,5 +87,10 @@ public partial class _1_List : System.Web.UI.Page
         lstUsersList.DataValueField = "UserID";
         lstUsersList.DataTextField = "Username";
         lstUsersList.DataBind();
+    }
+
+    protected void btnMainMenu_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }

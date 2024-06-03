@@ -26,6 +26,8 @@ public partial class UsersLogin : System.Web.UI.Page
         Password = Convert.ToString(txtPassword.Text);
 
         Found = AnAdmin.FindAdmin(Username, Password);
+        Session["AnAdmin"] = AnAdmin;
+
         if (txtUsername.Text == "")
         {
             lblError.Text = "Enter User Name ";
