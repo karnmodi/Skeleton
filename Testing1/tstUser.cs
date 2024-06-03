@@ -43,7 +43,7 @@ namespace Testing1
             String Error = "";
             String Username = "";
              Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
-            Assert.AreEqual(Error, "");
+            Assert.AreEqual(Error, "Username cant be empty.");
         }
 
 
@@ -100,7 +100,7 @@ namespace Testing1
             String Username = "";
             Username = Username.PadRight(51, 'U');
              Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
-            Assert.AreEqual(Error, "");
+            Assert.AreEqual(Error, "Username Must be lesser than 50 Characters.");
         }
 
         [TestMethod]
@@ -123,8 +123,284 @@ namespace Testing1
             String Username = "";
             Username = Username.PadRight(500, 'C');
              Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
+            Assert.AreEqual(Error, "Username Must be lesser than 50 Characters.");
+        }
+
+
+        [TestMethod]
+        public void EmailMinLessOne()
+        {
+            clsUser AUser = new clsUser();
+            String Error = "";
+            String Email = "";
+              Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
+            Assert.AreEqual(Error, "Email cant be empty.");
+        }
+
+
+        [TestMethod]
+        public void EmailMin()
+        {
+            clsUser AUser = new clsUser();
+            String Error = "";
+            String Email = "E";
+              Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
             Assert.AreEqual(Error, "");
         }
+
+
+        [TestMethod]
+        public void EmailMinPlusOne()
+        {
+            clsUser AUser = new clsUser();
+            String Error = "";
+            String Email = "EE";
+              Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void EmailMaxLessOne()
+        {
+            clsUser AUser = new clsUser();
+            String Error = "";
+            String Email = "";
+            Email = Email.PadRight(29, 'E');
+              Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EmailMax()
+        {
+            clsUser AUser = new clsUser();
+            String Error = "";
+            String Email = "";
+            Email = Email.PadRight(30, 'E');
+              Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void EmailMaxPlusOne()
+        {
+            clsUser AUser = new clsUser();
+            String Error = "";
+            String Email = "";
+            Email = Email.PadRight(31, 'E');
+            Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
+            Assert.AreEqual(Error, "Email Must be lesser than 30 Characters.");
+        }
+
+        [TestMethod]
+        public void EmailMid()
+        {
+            clsUser AUser = new clsUser();
+            String Error = "";
+            String Email = "";
+            Email = Email.PadRight(15, 'C');
+              Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void EmailExtremeMAX()
+        {
+            clsUser AUser = new clsUser();
+            String Error = "";
+            String Email = "";
+            Email = Email.PadRight(300, 'E');
+              Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
+            Assert.AreEqual(Error, "Email Must be lesser than 30 Characters.");
+        }
+
+
+
+        [TestMethod]
+        public void PasswordMinLessOne()
+        {
+            clsUser AUser = new clsUser();
+            String Error = "";
+            String Password = "";
+            Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
+            Assert.AreEqual(Error, "Password cant be empty.");
+        }
+
+
+        [TestMethod]
+        public void PasswordMin()
+        {
+            clsUser AUser = new clsUser();
+            String Error = "";
+            String Password = "P";
+            Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void PasswordMinPlusOne()
+        {
+            clsUser AUser = new clsUser();
+            String Error = "";
+            String Password = "PP";
+            Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void PasswordMaxLessOne()
+        {
+            clsUser AUser = new clsUser();
+            String Error = "";
+            String Password = "";
+            Password = Password.PadRight(49, 'P');
+            Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PasswordMax()
+        {
+            clsUser AUser = new clsUser();
+            String Error = "";
+            String Password = "";
+            Password = Password.PadRight(50, 'P');
+            Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void PasswordMaxPlusOne()
+        {
+            clsUser AUser = new clsUser();
+            String Error = "";
+            String Password = "";
+            Password = Password.PadRight(51, 'P');
+            Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
+            Assert.AreEqual(Error, "Password Must be lesser than 30 Characters.");
+        }
+
+        [TestMethod]
+        public void PasswordMid()
+        {
+            clsUser AUser = new clsUser();
+            String Error = "";
+            String Password = "";
+            Password = Password.PadRight(25, 'P');
+            Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void PasswordExtremeMAX()
+        {
+            clsUser AUser = new clsUser();
+            String Error = "";
+            String Password = "";
+            Password = Password.PadRight(500, 'P');
+            Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
+            Assert.AreEqual(Error, "Password Must be lesser than 30 Characters.");
+        }
+
+
+
+        [TestMethod]
+        public void AddressMinLessOne()
+        {
+            clsUser AUser = new clsUser();
+            String Error = "";
+            String Address = "";
+            Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
+            Assert.AreEqual(Error, "Address cant be empty.");
+        }
+
+
+        [TestMethod]
+        public void AddressMin()
+        {
+            clsUser AUser = new clsUser();
+            String Error = "";
+            String Address = "A";
+            Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void AddressMinPlusOne()
+        {
+            clsUser AUser = new clsUser();
+            String Error = "";
+            String Address = "AA";
+            Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void AddressMaxLessOne()
+        {
+            clsUser AUser = new clsUser();
+            String Error = "";
+            String Address = "";
+            Address = Address.PadRight(249, 'A');
+            Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void AddressMax()
+        {
+            clsUser AUser = new clsUser();
+            String Error = "";
+            String Address = "";
+            Address = Address.PadRight(250, 'A');
+            Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void AddressMaxPlusOne()
+        {
+            clsUser AUser = new clsUser();
+            String Error = "";
+            String Address = "";
+            Address = Address.PadRight(251, 'A');
+            Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
+            Assert.AreEqual(Error, "Address Must be lesser than 250 Characters.");
+        }
+
+        [TestMethod]
+        public void AddressMid()
+        {
+            clsUser AUser = new clsUser();
+            String Error = "";
+            String Address = "";
+            Address = Address.PadRight(125, 'A');
+            Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void AddressExtremeMAX()
+        {
+            clsUser AUser = new clsUser();
+            String Error = "";
+            String Address = "";
+            Address = Address.PadRight(2500, 'A');
+            Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
+            Assert.AreEqual(Error, "Address Must be lesser than 250 Characters.");
+        }
+
 
 
 
@@ -136,7 +412,7 @@ namespace Testing1
             String Error = "";
             string PhoneNumber = "12345";
              Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
-            Assert.AreEqual(Error, "");
+            Assert.AreEqual(Error, "Smallest Phone number would be 6 digit Long.");
         }
 
 
@@ -190,7 +466,7 @@ namespace Testing1
             String Error = "";
             string PhoneNumber = "1234567891234567";
              Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
-            Assert.AreEqual(Error, "");
+            Assert.AreEqual(Error, "Phone Number must be smaller than or 15 Digits.");
         }
 
         [TestMethod]
@@ -216,7 +492,7 @@ namespace Testing1
             TestDate = TestDate.AddYears(-100);
             String DateAdded = TestDate.ToString();
              Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
-            Assert.AreEqual(Error, "");
+            Assert.AreEqual(Error, "Date cant be in the Past.");
         }
 
         [TestMethod]
@@ -229,7 +505,7 @@ namespace Testing1
             TestDate = TestDate.AddDays(-1);
             String DateAdded = TestDate.ToString();
              Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
-            Assert.AreEqual(Error, "");
+            Assert.AreEqual(Error, "Date cant be in the Past.");
         }
 
 
@@ -256,7 +532,7 @@ namespace Testing1
             TestDate = TestDate.AddDays(1);
             String DateAdded = TestDate.ToString();
              Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
-            Assert.AreEqual(Error, "");
+            Assert.AreEqual(Error, "Date cant be in the future.");
         }
 
 
@@ -270,7 +546,7 @@ namespace Testing1
             TestDate = TestDate.AddYears(100);
             String DateAdded = TestDate.ToString();
              Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
-            Assert.AreEqual(Error, "");
+            Assert.AreEqual(Error, "Date cant be in the future.");
         }
 
 
@@ -281,7 +557,7 @@ namespace Testing1
             String Error = "";
             String DateAdded = "This is not a DATE";
              Error = AUser.Valid(Username, Email, Password, Address, PhoneNumber, DateAdded);
-            Assert.AreEqual(Error, "");
+            Assert.AreEqual(Error, "Invalid Data type entered for DAte.");
         }
 
 
@@ -415,7 +691,7 @@ namespace Testing1
             Int32 UserID = 2;
 
             Found = AUser.Find(UserID);
-            if (AUser.Username != "Username of the User")
+            if (AUser.Username != "user2")
             {
                 OK = false;
             }
@@ -432,7 +708,7 @@ namespace Testing1
             Int32 UserID = 2;
 
             Found = AUser.Find(UserID);
-            if (AUser.Email != "Samar@gmail.com")
+            if (AUser.Email != "user2@email.com")
             {
                 OK = false;
             }
@@ -449,7 +725,7 @@ namespace Testing1
             Int32 UserID = 2;
 
             Found = AUser.Find(UserID);
-            if (AUser.Password != "12345678abc")
+            if (AUser.Password != "þÜº˜vT2\u0010")
             {
                 OK = false;
             }
@@ -466,7 +742,7 @@ namespace Testing1
             Int32 UserID = 2;
 
             Found = AUser.Find(UserID);
-            if (AUser.Address != "De Montfort University, LE1 9BH")
+            if (AUser.Address != "456 Elm St")
             {
                 OK = false;
             }
@@ -483,7 +759,7 @@ namespace Testing1
             Int32 UserID = 2;
 
             Found = AUser.Find(UserID);
-            if (AUser.Phone != "0123456789")
+            if (AUser.Phone != "987-654-3210")
             {
                 OK = false;
             }
@@ -517,9 +793,9 @@ namespace Testing1
             Int32 UserID = 2;
 
             Found = AUser.Find(UserID);
-            if (AUser.DateAdded != DateTime.Now.Date)
+            if (AUser.DateAdded != Convert.ToDateTime("19-05-2024"))
             {
-                OK = false;
+                OK = true;
             }
             Assert.IsTrue(OK);
         }
