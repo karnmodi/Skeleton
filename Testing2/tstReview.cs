@@ -2,6 +2,7 @@
 using System;
 using ClassLibrary;
 using System.Diagnostics;
+using System.Net;
 
 namespace Testing5
 {
@@ -35,7 +36,7 @@ namespace Testing5
             String Error = "";
             String Category = "";
             Error = AReview.Valid(Category, Rating, Comment, DateAdded, Recent);
-            Assert.AreEqual(Error, "");
+            Assert.AreEqual(Error, "Category cant be empty.");
         }
 
 
@@ -92,7 +93,7 @@ namespace Testing5
             String Category = "";
             Category = Category.PadRight(51, 'C');
             Error = AReview.Valid(Category, Rating, Comment, DateAdded, Recent);
-            Assert.AreEqual(Error, "");
+            Assert.AreEqual(Error, "Category Cant be More than 50");
         }
 
         [TestMethod]
@@ -113,11 +114,102 @@ namespace Testing5
             clsReview AReview = new clsReview();
             String Error = "";
             String Category = "";
-            Category = Category.PadRight(500, 'C');
+            Category = Category.PadRight(50000, 'C');
             Error = AReview.Valid(Category, Rating, Comment, DateAdded, Recent);
+            Assert.AreEqual(Error, "Category Cant be More than 50");
+        }
+
+
+
+        [TestMethod]
+        public void CommentMinLessOne()
+        {
+            clsReview AReview = new clsReview();
+            String Error = "";
+            String Comment = "";
+            Error = AReview.Valid(Category, Rating, Comment, DateAdded, Recent);
+            Assert.AreEqual(Error, "Comment cant be empty.");
+        }
+
+
+        [TestMethod]
+        public void CommentMin()
+        {
+            clsReview AReview = new clsReview();
+            String Error = "";
+            String Comment = "C";
+             Error = AReview.Valid(Category, Rating, Comment, DateAdded, Recent);
             Assert.AreEqual(Error, "");
         }
 
+
+        [TestMethod]
+        public void CommentMinPlusOne()
+        {
+            clsReview AReview = new clsReview();
+            String Error = "";
+            String Comment = "CC";
+             Error = AReview.Valid(Category, Rating, Comment, DateAdded, Recent);
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void CommentMaxLessOne()
+        {
+            clsReview AReview = new clsReview();
+            String Error = "";
+            String Comment = "";
+            Comment = Comment.PadRight(199, 'C');
+             Error = AReview.Valid(Category, Rating, Comment, DateAdded, Recent);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CommentMax()
+        {
+            clsReview AReview = new clsReview();
+            String Error = "";
+            String Comment = "";
+            Comment = Comment.PadRight(200, 'C');
+             Error = AReview.Valid(Category, Rating, Comment, DateAdded, Recent);
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void CommentMaxPlusOne()
+        {
+            clsReview AReview = new clsReview();
+            String Error = "";
+            String Comment = "";
+            Comment = Comment.PadRight(201, 'C');
+             Error = AReview.Valid(Category, Rating, Comment, DateAdded, Recent);
+            Assert.AreEqual(Error, "Comment Cant be More than 200");
+        }
+
+        [TestMethod]
+        public void CommentMid()
+        {
+            clsReview AReview = new clsReview();
+            String Error = "";
+            String Comment = "";
+            Comment = Comment.PadRight(100, 'C');
+             Error = AReview.Valid(Category, Rating, Comment, DateAdded, Recent);
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void CommentExtremeMAX()
+        {
+            clsReview AReview = new clsReview();
+            String Error = "";
+            String Comment = "";
+            Comment = Comment.PadRight(50000, 'C');
+             Error = AReview.Valid(Category, Rating, Comment, DateAdded, Recent);
+            Assert.AreEqual(Error, "Comment Cant be More than 200");
+        }
 
 
         [TestMethod]
@@ -128,7 +220,7 @@ namespace Testing5
             Int32 value = -500;
             string Rating = Convert.ToString(value);
             Error = AReview.Valid(Category, Rating, Comment, DateAdded, Recent);
-            Assert.AreEqual(Error, "");
+            Assert.AreEqual(Error, "Rating should neither be negative nor zero.");
         }
 
         [TestMethod]
@@ -139,7 +231,7 @@ namespace Testing5
             Int32 value = 0;
             string Rating = Convert.ToString(value);
             Error = AReview.Valid(Category, Rating, Comment, DateAdded, Recent);
-            Assert.AreEqual(Error, "");
+            Assert.AreEqual(Error, "Rating should neither be negative nor zero.");
         }
 
 
@@ -198,7 +290,7 @@ namespace Testing5
             Int32 value = 11;
             string Rating = Convert.ToString(value);
             Error = AReview.Valid(Category, Rating, Comment, DateAdded, Recent);
-            Assert.AreEqual(Error, "");
+            Assert.AreEqual(Error, "Rating should be less than 10 or equal to 10.");
         }
 
         [TestMethod]
@@ -221,7 +313,7 @@ namespace Testing5
             Int32 value = 500;
             string Rating = Convert.ToString(value);
             Error = AReview.Valid(Category, Rating, Comment, DateAdded, Recent);
-            Assert.AreEqual(Error, "");
+            Assert.AreEqual(Error, "Rating should be less than 10 or equal to 10.");
         }
 
         [TestMethod]
@@ -229,9 +321,9 @@ namespace Testing5
         {
             clsReview AReview = new clsReview();
             string Error = "";
-            string Rating = "5000sd";
+            string Rating = "Ten";
             Error = AReview.Valid(Category, Rating, Comment, DateAdded, Recent);
-            Assert.AreEqual(Error, "");
+            Assert.AreEqual(Error, "Rating is not in the proper format; it must be an integer.");
         }
 
 
@@ -248,7 +340,7 @@ namespace Testing5
             TestDate = TestDate.AddYears(-100);
             String DateAdded = TestDate.ToString();
             Error = AReview.Valid(Category, Rating, Comment, DateAdded, Recent);
-            Assert.AreEqual(Error, "");
+            Assert.AreEqual(Error, "Date must not be in the past.");
         }
 
         [TestMethod]
@@ -261,7 +353,7 @@ namespace Testing5
             TestDate = TestDate.AddDays(-1);
             String DateAdded = TestDate.ToString();
             Error = AReview.Valid(Category, Rating, Comment, DateAdded, Recent);
-            Assert.AreEqual(Error, "");
+            Assert.AreEqual(Error, "Date must not be in the past.");
         }
 
 
@@ -288,7 +380,7 @@ namespace Testing5
             TestDate = TestDate.AddDays(1);
             String DateAdded = TestDate.ToString();
             Error = AReview.Valid(Category, Rating, Comment, DateAdded, Recent);
-            Assert.AreEqual(Error, "");
+            Assert.AreEqual(Error, "Date must not be in the Future.");
         }
 
 
@@ -302,7 +394,7 @@ namespace Testing5
             TestDate = TestDate.AddYears(100);
             String DateAdded = TestDate.ToString();
             Error = AReview.Valid(Category, Rating, Comment, DateAdded, Recent);
-            Assert.AreEqual(Error, "");
+            Assert.AreEqual(Error, "Date must not be in the Future.");
         }
 
 
@@ -313,7 +405,7 @@ namespace Testing5
             String Error = "";
             String DateAdded = "This is not a DATE";
             Error = AReview.Valid(Category, Rating, Comment, DateAdded, Recent);
-            Assert.AreEqual(Error, "");
+            Assert.AreEqual(Error, "DatePosted is not in the proper format; it must be a DATE (DD/MM/YYYY).");
         }
 
 
@@ -343,7 +435,7 @@ namespace Testing5
         public void CategoryPropertyOK()
         {
             clsReview AReview = new clsReview();
-            String TestData = "Username1";
+            String TestData = "name1";
             AReview.Category = TestData;
             Assert.AreEqual(AReview.Category, TestData);
         }
@@ -488,7 +580,7 @@ namespace Testing5
             Int32 ReviewID = 2;
 
             Found = AReview.Find(ReviewID);
-            if (AReview.DatePosted != DateTime.Now.Date)
+            if (AReview.DatePosted != Convert.ToDateTime("19-05-2024"))
             {
                 OK = false;
             }

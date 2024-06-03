@@ -125,6 +125,15 @@ namespace ClassLibrary
                 Error = Error + "Category Cant be More than 50";
             }
 
+            if (comment.Length == 0)
+            {
+                Error = Error + "Comment cant be empty.";
+            }
+            if (comment.Length >= 201)
+            {
+                Error = Error + "Comment Cant be More than 200";
+            }
+
             try
             {
                 CheckRating = Convert.ToInt32(rating);
