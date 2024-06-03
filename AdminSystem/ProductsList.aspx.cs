@@ -15,6 +15,10 @@ public partial class _1_List : System.Web.UI.Page
         {
             DisplayProducts();
         }
+
+        clsProductAdmin AnAdmin = new clsProductAdmin();
+        AnAdmin = (clsProductAdmin)Session["AnAdmin"];
+        lblLoggedIn.Text = "Logged In as: " + AnAdmin.AdminName;
         lblError.Text = Convert.ToString(Session["Message"]);
 
 
@@ -80,5 +84,10 @@ public partial class _1_List : System.Web.UI.Page
         lstProductsList.DataValueField = "ProductID";
         lstProductsList.DataTextField = "Title";
         lstProductsList.DataBind();
+    }
+
+    protected void btnLogout_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }

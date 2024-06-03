@@ -4,14 +4,62 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Product Deletion Confirmation page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            width: 400px;
+        }
+        .container h2 {
+            margin-top: 0;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        .buttons button {
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+            padding: 10px 20px;
+            transition: background-color 0.3s;
+        }
+        .buttons button:hover {
+            background-color: #0056b3;
+        }
+        .buttons button#btnNo {
+            background-color: #6c757d;
+        }
+        .buttons button#btnNo:hover {
+            background-color: #5a6268;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div style="height: 382px; width: 512px;">
-            <asp:Button ID="btnNo" runat="server" style="z-index: 1; left: 257px; top: 237px; position: absolute; height: 29px; width: 42px;" Text="No" OnClick="btnNo_Click" />
-            <asp:Button ID="btnYes" runat="server" OnClick="btnYes_Click" style="z-index: 1; left: 144px; top: 239px; position: absolute" Text="Yes" />
-            <asp:Label ID="lbltext" runat="server" style="z-index: 1; left: 117px; top: 165px; position: absolute; width: 279px" Text="Are you sure,<br> You want to Delete this Product?"></asp:Label>
+         <div class="container">
+            <h2>Confirm Deletion</h2>
+            <asp:Label ID="lbltext" runat="server" Text="Are you sure you want to delete this product?"></asp:Label>
+            <div class="buttons">
+                <asp:Button ID="btnYes" runat="server" Text="Yes" OnClick="btnYes_Click" />
+                <asp:Button ID="btnNo" runat="server" Text="No" OnClick="btnNo_Click" />
+            </div>
         </div>
     </form>
 </body>

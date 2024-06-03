@@ -4,38 +4,134 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
-    <style type="text/css">
-        #form1 {
-            height: 669px;
+    <title>Products Data Entry Page.</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 400px;
+            box-sizing: border-box;
+        }
+        h2 {
+            text-align: center;
+            margin-top: 0;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 5px;
+            color: #555;
+        }
+        input[type="text"], input[type="number"], input[type="date"] {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+        button {
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .cancel-button {
+            background-color: #6c757d;
+        }
+        .cancel-button:hover {
+            background-color: #5a6268;
+        }
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+        .logout-container {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body style="height: 668px">
 
     <form id="form1" runat="server">
-        <div>
+        <div class="container">
+            <h2>Product Data Entry</h2>
+
+                <asp:Label ID="lblLoggedIn" runat="server" Text="Label"></asp:Label>
+            <div class="logout-container">
+                <asp:Button ID="btnLogout" runat="server" OnClick="btnLogout_Click" Text="LogOut" />
+            </div>
+
+            <div class="form-group">
+                <label for="txtProductID">Product ID</label>
+                <asp:TextBox ID="txtProductID" runat="server" />
+            </div>
+
+            <div class="form-group">
+                <label for="txtTitle">Title</label>
+                <asp:TextBox ID="txtTitle" runat="server" />
+            </div>
+
+            <div class="form-group">
+                <label for="txtDescription">Description</label>
+                <asp:TextBox ID="txtDescription" runat="server" />
+            </div>
+
+            <div class="form-group">
+                <label for="txtPrice">Price</label>
+                <asp:TextBox ID="txtPrice" runat="server" />
+            </div>
+
+            <div class="form-group">
+                <label for="txtCondition">Condition</label>
+                <asp:TextBox ID="txtCondition" runat="server" />
+            </div>
+
+            <div class="form-group">
+                <label for="chkAvailable">Availability</label>
+                <asp:CheckBox ID="chkAvailable" runat="server" />
+            </div>
+
+            <div class="form-group">
+                <label for="txtDate">Date</label>
+                <asp:TextBox ID="txtDate" runat="server" />
+            </div>
+
+            <asp:Label ID="lblError" runat="server" CssClass="error" />
+
+            <div class="buttons">
+                <asp:Button ID="btnOK" runat="server" Text="OK" OnClick="btnOK_Click" />
+                <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="cancel-button" OnClick="btnCancel_Click" />
+                <asp:Button ID="btnFind" runat="server" Text="Find" OnClick="btnFind_Click" />
+            </div>
         </div>
-        <asp:Label ID="lblProductID" runat="server" style="z-index: 1; left: 10px; top: 39px; position: absolute" Text="Prodcut ID"></asp:Label>
-            <asp:TextBox ID="txtProductID" runat="server" style="z-index: 1; left: 114px; top: 37px; position: absolute"></asp:TextBox>
-        <asp:Label ID="lblTitle" runat="server" style="z-index: 1; left: 10px; top: 97px; position: absolute" Text="Title" width="86px"></asp:Label>
-        <asp:TextBox ID="txtTitle" runat="server" style="z-index: 1; left: 113px; top: 97px; position: absolute"></asp:TextBox>
-
-        <asp:Label ID="lblDescription" runat="server" style="z-index: 1; left: 10px; position: absolute; right: 1073px; top: 157px;" Text="Description" width="86px"></asp:Label>
-        <asp:TextBox ID="txtDescription" runat="server" style="z-index: 1; left: 110px; top: 157px; position: absolute"></asp:TextBox>
-            <asp:TextBox ID="txtPrice" runat="server" style="z-index: 1; left: 109px; top: 217px; position: absolute"></asp:TextBox>
-        <asp:Label ID="lblPrice" runat="server" style="z-index: 1; left: 10px; top: 215px; position: absolute" Text="Price" width="86px"></asp:Label>
-            <asp:TextBox ID="txtCondition" runat="server" style="z-index: 1; left: 107px; top: 267px; position: absolute"></asp:TextBox>
-            <asp:Label ID="lblCondition" runat="server" style="z-index: 1; left: 10px; top: 268px; position: absolute" Text="Condition" width="86px"></asp:Label>
-        <asp:Label ID="lblAvaibility" runat="server" style="z-index: 1; left: 10px; top: 318px; position: absolute" Text="Avaibility" width="86px"></asp:Label>
-        <asp:Label ID="lblDate" runat="server" style="z-index: 1; left: 10px; position: absolute; top: 374px" Text="Date" width="86px"></asp:Label>
-
-            <asp:TextBox ID="txtDate" runat="server" style="z-index: 1; left: 102px; top: 374px; position: absolute"></asp:TextBox>
-        <asp:Label ID="lblError" runat="server" style="margin:10px; z-index: 1; left: 16px; top: 431px; position: absolute; width: 388px; height: 40px;" ForeColor="Red" BorderStyle="None" BorderWidth="1px"></asp:Label>
-        <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="width:fit-content; z-index : 1; left: 46px; top: 501px; position: absolute; right: 710px;" Text="OK" />
-        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; top: 501px; position: absolute; left: 128px" Text="cancel" />
-        <asp:CheckBox ID="chkAvailable" runat="server" style="z-index: 1; left: 103px; top: 318px; position: absolute" />
-        <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" style="z-index: 1; left: 330px; top: 37px; position: absolute; width: 72px" Text="Find" />
     </form>
 </body>
 </html>

@@ -4,20 +4,93 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Products Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 350px;
+            box-sizing: border-box;
+        }
+        h2 {
+            text-align: center;
+            margin-top: 0;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 5px;
+            color: #555;
+        }
+        input[type="text"], input[type="password"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+        button {
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .cancel-button {
+            background-color: #dc3545;
+        }
+        .cancel-button:hover {
+            background-color: #c82333;
+        }
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
+        <div class="container">
+            <h2>Products Login Page</h2>
+            <div class="form-group">
+                <asp:Label ID="lblAdminName" runat="server" Text="Admin Name:" AssociatedControlID="txtAdminName" />
+                <asp:TextBox ID="txtAdminName" runat="server" />
+            </div>
+            <div class="form-group">
+                <asp:Label ID="Label2" runat="server" Text="Password:" AssociatedControlID="txtPassword" />
+                <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" />
+            </div>
+            <asp:Label ID="lblError" runat="server" CssClass="error" />
+            <div class="buttons">
+                <asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click" />
+                <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="cancel-button" OnClick="btnCancel_Click" />
+            </div>
         </div>
-        <asp:Label ID="Label1" runat="server" style="z-index: 1; left: 10px; top: 37px; position: absolute" Text="Products Login Page"></asp:Label>
-        <asp:Label ID="lblAdminName" runat="server" style="z-index: 1; left: 39px; top: 117px; position: absolute" Text="Admin Name: "></asp:Label>
-        <asp:Label ID="Label2" runat="server" style="z-index: 1; left: 41px; top: 171px; position: absolute" Text="Password: "></asp:Label>
-        <asp:TextBox ID="txtAdminName" runat="server" style="z-index: 1; left: 169px; top: 120px; position: absolute"></asp:TextBox>
-        <asp:TextBox ID="txtPassword" runat="server" style="z-index: 1; left: 166px; top: 168px; position: absolute" TextMode="Password"></asp:TextBox>
-        <asp:Label ID="lblError" runat="server" ForeColor="Red" style="z-index: 1; left: 388px; top: 170px; position: absolute"></asp:Label>
-        <asp:Button ID="btnLogin" runat="server" OnClick="btnLogin_Click" style="z-index: 1; left: 64px; top: 241px; position: absolute" Text="Login" />
-        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 198px; top: 241px; position: absolute" Text="Cancel" />
     </form>
 </body>
 </html>
