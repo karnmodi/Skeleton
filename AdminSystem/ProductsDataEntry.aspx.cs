@@ -15,7 +15,17 @@ public partial class _1_DataEntry : System.Web.UI.Page
                 DisplayProduct();
 
             }
+
+            if(ProductID == -1)
+            {
+                txtProductID.Enabled = false; 
+                txtProductID.Text = "Disabled";
+            }
         }
+
+        clsProductAdmin AnAdmin = new clsProductAdmin();
+        AnAdmin = (clsProductAdmin)Session["AnAdmin"];
+        lblLoggedIn.Text = "Logged In as: " + AnAdmin.AdminName;
     }
 
     void DisplayProduct()
@@ -105,5 +115,15 @@ public partial class _1_DataEntry : System.Web.UI.Page
         }
 
 
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("ProductsList.aspx");
+    }
+
+    protected void btnLogout_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }

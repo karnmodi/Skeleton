@@ -26,6 +26,8 @@ public partial class ProductsLogin : System.Web.UI.Page
         Password = Convert.ToString(txtPassword.Text);
 
         Found = AnAdmin.FindAdmin(AdminName, Password);
+        Session["AnAdmin"] = AnAdmin;
+
         if (txtAdminName.Text == "")
         {
             lblError.Text = "Enter Admin Name ";
@@ -44,5 +46,10 @@ public partial class ProductsLogin : System.Web.UI.Page
             lblError.Text = "Login Details are incorrect,\n Please Try again.";
         }
 
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }
