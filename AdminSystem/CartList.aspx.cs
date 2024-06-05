@@ -15,9 +15,9 @@ public partial class _1_List : System.Web.UI.Page
         {
             DisplayCarts();
         }
-        /*clsCartAdmin AnAdmin = new clsCartAdmin();
+        clsCartAdmin AnAdmin = new clsCartAdmin();
         AnAdmin = (clsCartAdmin)Session["AnAdmin"];
-        Response.Write("Logged in as : " + AnAdmin.Adminname);*/
+        Response.Write("Logged in as : " + AnAdmin.Username);
     }
     void DisplayCarts()
     {
