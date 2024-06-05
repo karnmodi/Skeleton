@@ -22,9 +22,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
             }
         }
 
-        /*clsCartAdmin AnAdmin = new clsCartAdmin();
+        clsCartAdmin AnAdmin = new clsCartAdmin();
         AnAdmin = (clsCartAdmin)Session["AnAdmin"];
-        Response.Write("Logged in as : " + AnAdmin.Adminname);*/
+        Response.Write("Logged in as : " + AnAdmin.Username);
     }
 
     void DisplayCart()
